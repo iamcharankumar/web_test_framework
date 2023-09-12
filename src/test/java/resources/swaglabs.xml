@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Testing Swag Labs" parallel="methods" data-provider-thread-count="3" thread-count="3">
+    <listeners>
+        <listener class-name="io.saucelabs.portal.qa.listeners.SauceLabsPortalListener"/>
+    </listeners>
+    <test name="Regression Tests for Sauce Labs">
+        <classes>
+            <class name="io.saucelabs.portal.qa.testcases.LoginPageTest"/>
+            <class name="io.saucelabs.portal.qa.testcases.HomePageTest"/>
+            <class name="io.saucelabs.portal.qa.testcases.CartPageTest"/>
+        </classes>
+    </test>
+</suite>
