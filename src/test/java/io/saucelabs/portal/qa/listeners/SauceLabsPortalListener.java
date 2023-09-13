@@ -50,7 +50,7 @@ public class SauceLabsPortalListener extends BaseTest implements ITestListener, 
         takeScreenshot(result);
     }
 
-    public void takeScreenshot(ITestResult testResult) {
+    private void takeScreenshot(ITestResult testResult) {
         TakesScreenshot takesScreenshot = (TakesScreenshot) driver.get();
         File sourceFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
         File destinationFile;
