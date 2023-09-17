@@ -1,13 +1,13 @@
 package io.saucelabs.portal.qa.testcases;
 
 import io.saucelabs.portal.qa.module.SauceLabsPortal;
+import lombok.extern.slf4j.Slf4j;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import lombok.extern.slf4j.Slf4j;
-
 import java.lang.reflect.Method;
+import java.util.List;
 
 @Slf4j
 public class LoginPageTest extends SauceLabsPortalTestBase {
@@ -21,6 +21,8 @@ public class LoginPageTest extends SauceLabsPortalTestBase {
     public void setUpSauceLabsPortal(Method method) {
         log.info("Thread id in BeforeMethod for the test method :{} is {}.", method.getName(), Thread.currentThread().getId());
         SAUCELABS_PORTAL.set(new SauceLabsPortal(driver.get()));
+        cdp.get().blockUrls(List.of("*.svg"));
+        cdp.get().captureNetworkCalls();
         SAUCELABS_PORTAL.get().visit();
         driver.get().navigate().refresh();
         driver.get().manage().window().maximize();

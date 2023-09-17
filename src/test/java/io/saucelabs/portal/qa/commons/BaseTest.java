@@ -1,21 +1,25 @@
 package io.saucelabs.portal.qa.commons;
 
-import java.lang.reflect.Method;
-
+import io.saucelabs.portal.qa.cdp.CdpTools;
+import io.saucelabs.portal.qa.cdp.ICdp;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chromium.ChromiumDriver;
+import org.openqa.selenium.devtools.DevTools;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
-import lombok.extern.slf4j.Slf4j;
+import java.lang.reflect.Method;
 
 @Slf4j
 public abstract class BaseTest {
 
     protected static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     private static DriverManager<WebDriver> driverManager;
+    protected static ThreadLocal<CdpTools> cdp = new ThreadLocal<>();
 
     @BeforeSuite(alwaysRun = true)
     public void setup(ITestContext context) {
@@ -27,10 +31,17 @@ public abstract class BaseTest {
     public void init(Method method) {
         driver.set(driverManager.getDriver());
         log.info("WebDriver has been set");
+        ChromiumDriver chromiumDriver = (ChromiumDriver) driver.get();
+        ICdp<DevTools> cdpTools = new CdpTools();
+        DevTools devTools = cdpTools.getDevTools(chromiumDriver);
+        devTools.createSession();
+        cdp.set(new CdpTools(devTools));
+        log.info("CDP Session Created {}", devTools.getCdpSession());
     }
 
     @AfterMethod(alwaysRun = true)
     public void destroy(ITestResult result) {
+        cdp.remove();
         driverManager.destroyDriver(driver.get());
         driver.remove();
         log.info("WebDriver manager has been removed/destroyed");

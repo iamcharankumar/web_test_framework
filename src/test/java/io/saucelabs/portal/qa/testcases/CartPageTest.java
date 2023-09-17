@@ -20,7 +20,7 @@ public class CartPageTest extends SauceLabsPortalTestBase {
         log.info("Verified the Cart Page Title Text {}", yourCartTitleText);
     }
 
-    @Test(description = "To verify, the cart page title.")
+    @Test(description = "To verify, the cart product count.")
     public void testCartProductCount() {
         boolean isCartClicked = SAUCELABS_PORTAL.get().HOME_PAGE.isShoppingCartLinkClicked();
         Assert.assertTrue(isCartClicked, "Shopping Cart Link click failed!");
@@ -47,7 +47,8 @@ public class CartPageTest extends SauceLabsPortalTestBase {
         log.info("Verified the Cart Description Label {}.", cartDescriptionText);
     }
 
-    @Test(description = "To verify, the cart entries.", dataProvider = "cart-products", dataProviderClass = SauceLabsDataProvider.class)
+    @Test(description = "To verify, the cart entries.",
+            dataProvider = "cart-products", dataProviderClass = SauceLabsDataProvider.class)
     public void testShoppingCartEntries(String productName, String productPrice, String productDescription) {
         boolean isCartClicked = SAUCELABS_PORTAL.get().HOME_PAGE.isShoppingCartLinkClicked();
         Assert.assertTrue(isCartClicked, "Shopping Cart Link click failed!");
