@@ -3,6 +3,7 @@
 <suite name="Testing Swag Labs" parallel="methods" data-provider-thread-count="3" thread-count="3">
     <listeners>
         <listener class-name="io.saucelabs.portal.qa.listeners.SauceLabsPortalListener"/>
+        <listener class-name="io.saucelabs.portal.qa.listeners.AnnotationTransformer"/>
     </listeners>
     <test name="Regression Tests for Sauce Labs">
         <classes>
