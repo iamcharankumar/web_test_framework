@@ -93,18 +93,11 @@ public class SauceLabsPortalListener extends BaseTest implements ITestListener, 
     }
 
     private String getTestStatusName(int status) {
-        String testStatus = null;
-        switch (status) {
-            case 1:
-                testStatus = "SUCCESS";
-                break;
-            case 2:
-                testStatus = "FAILED";
-                break;
-            case 3:
-                testStatus = "SKIP";
-                break;
-        }
-        return testStatus;
+        return switch (status) {
+            case 1 -> "SUCCESS";
+            case 2 -> "FAILED";
+            case 3 -> "SKIP";
+            default -> null;
+        };
     }
 }
