@@ -7,15 +7,17 @@ import org.testng.ITestResult;
 @Slf4j
 public class SauceLabsPortalRetryAnalyzer implements IRetryAnalyzer {
     private int COUNT = 0;
+    private static final int MAX_RETRY = 3;
 
     @Override
     public boolean retry(ITestResult result) {
-        int MAX_RETRY = 3;
-        if (!result.isSuccess() && COUNT < MAX_RETRY) {
-            log.info("Retrying test for {} time(s) for the test method {} with test status {}.",
-                    COUNT + 1, result.getName(), getTestStatusName(result.getStatus()));
-            COUNT++;
-            return true;
+        if (!result.isSuccess()) {
+            if (COUNT < MAX_RETRY) {
+                log.info("Retrying test for {} time(s) for the test method {} with test status {}.",
+                        COUNT + 1, result.getName(), getTestStatusName(result.getStatus()));
+                COUNT++;
+                return true;
+            }
         }
         log.info("Retrying for the test method {} is exhausted.", result.getName());
         return false;
