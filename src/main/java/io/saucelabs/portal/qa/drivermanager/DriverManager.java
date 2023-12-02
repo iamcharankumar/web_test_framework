@@ -1,4 +1,4 @@
-package io.saucelabs.portal.qa.commons;
+package io.saucelabs.portal.qa.drivermanager;
 
 import org.openqa.selenium.MutableCapabilities;
 
