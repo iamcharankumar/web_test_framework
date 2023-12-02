@@ -1,5 +1,6 @@
-package io.saucelabs.portal.qa.commons;
+package io.saucelabs.portal.qa.drivermanager;
 
+import io.saucelabs.portal.qa.commons.SauceLabsPortalConstant;
 import io.saucelabs.portal.qa.utils.PropertiesHelper;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,4 +1,4 @@
-package io.saucelabs.portal.qa.commons;
+package io.saucelabs.portal.qa.drivermanager;
 
 import io.saucelabs.portal.qa.exceptions.UnSupportedBrowserException;
 import lombok.AllArgsConstructor;
