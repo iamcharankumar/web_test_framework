@@ -2,6 +2,12 @@
 
 A Web Test Framework for developing regression suites. The test cases can be run locally and in remote server.
 
+STEPS FOR THE TEST EXECUTION
+1. git clone https://github.com/iamcharankumar/web_test_framework.git
+2. cd web_test_framework
+3. git pull
+4. mvn clean test -DsuiteXmlFile=swaglabs.xml -Dparallel=methods -Ddataproviderthreadcount=2 -Dthreadcount=3
+
 # PROPERTIES SETUP FOR SELENIUM GRID
 
 ###### runmode value can be 'local' or 'remote'. To run in remote server, follow the below docker setup instructions.

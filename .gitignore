@@ -185,3 +185,4 @@ test-output/
 .idea/modules.xml
 .idea/
 screenshots/
+*.DS_Store
