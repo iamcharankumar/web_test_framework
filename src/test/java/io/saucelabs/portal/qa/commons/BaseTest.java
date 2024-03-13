@@ -9,6 +9,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.asserts.SoftAssert;
 
 import java.lang.reflect.Method;
 
@@ -17,6 +18,7 @@ public abstract class BaseTest {
 
     protected static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
     private static DriverManager<WebDriver> driverManager;
+    protected SoftAssert softAssert = new SoftAssert();
 
     @BeforeSuite(alwaysRun = true)
     public void setup(ITestContext context) {

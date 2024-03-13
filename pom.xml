@@ -64,17 +64,16 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
                 <configuration>
-                    <suiteXmlFiles>
-                        <suiteXmlFile>src/test/resources/swaglabs.xml</suiteXmlFile>
-                    </suiteXmlFiles>
+                    <properties>
+                        <property>
+                            <name>listener</name>
+                            <value>
+                                io.saucelabs.portal.qa.listeners.SauceLabsPortalListener,
+                                io.saucelabs.portal.qa.listeners.AnnotationTransformer
+                            </value>
+                        </property>
+                    </properties>
                 </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.apache.maven.surefire</groupId>
-                        <artifactId>surefire-testng</artifactId>
-                        <version>3.0.0-M5</version>
-                    </dependency>
-                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

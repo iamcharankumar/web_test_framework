@@ -1,7 +1,6 @@
 package io.saucelabs.portal.qa.drivermanager;
 
-import io.saucelabs.portal.qa.commons.SauceLabsPortalConstant;
-import io.saucelabs.portal.qa.utils.PropertiesHelper;
+import io.saucelabs.portal.qa.utils.ConfigLoader;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.MutableCapabilities;
@@ -15,10 +14,9 @@ public class WebDriverManager implements DriverManager<WebDriver> {
 
     @Override
     public WebDriver getDriver() {
-        PropertiesHelper propertiesHelper = new PropertiesHelper();
-        String runMode = propertiesHelper.getProperty(SauceLabsPortalConstant.SAUCELABS_PROTAL_PROPERTIES_FILE, "runmode");
-        String server = propertiesHelper.getProperty(SauceLabsPortalConstant.SAUCELABS_PROTAL_PROPERTIES_FILE, "server");
-        String browserName = propertiesHelper.getProperty(SauceLabsPortalConstant.SAUCELABS_PROTAL_PROPERTIES_FILE, "browser");
+        String runMode = ConfigLoader.getInstance().getRunMode();
+        String server = ConfigLoader.getInstance().getServerUrl();
+        String browserName = ConfigLoader.getInstance().getBrowser();
         WebDriverFactory webDriverFactory = new WebDriverFactory(browserName);
         if (runMode.equalsIgnoreCase("remote")) {
             log.info("Executing the test cases in remote server {}", server);
