@@ -1,11 +1,10 @@
 package io.saucelabs.portal.qa.testcases;
 
+import io.saucelabs.portal.qa.constants.TestGroups;
 import io.saucelabs.portal.qa.module.SauceLabsPortal;
-import org.testng.Assert;
+import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Method;
 
@@ -26,24 +25,24 @@ public class LoginPageTest extends SauceLabsPortalTestBase {
         driver.get().manage().window().maximize();
     }
 
-    @Test(description = "To verify, the login page title.")
+    @Test(description = "To verify, the login page title.", groups = {TestGroups.SAUCE_LABS_SMOKE})
     public void testLoginPageTitle() {
         String loginPageTitle = SAUCELABS_PORTAL.get().LOGIN_PAGE.getPageTitle();
-        Assert.assertEquals(loginPageTitle, "Swag Labs", "Incorrect Login Page Title!");
+        softAssert.assertEquals(loginPageTitle, "Swag Labs", "Incorrect Login Page Title!");
         log.info("Verified the Login Page title: " + loginPageTitle);
     }
 
-    @Test(description = "To verify, the login page header text.")
+    @Test(description = "To verify, the login page header text.", groups = {TestGroups.SAUCE_LABS_SMOKE})
     public void testLoginPageHeaderText() {
         String loginPageHeaderText = SAUCELABS_PORTAL.get().LOGIN_PAGE.getHeaderText();
-        Assert.assertEquals(loginPageHeaderText, "Swag Labs", "Incorrect Login Page Header Text!");
+        softAssert.assertEquals(loginPageHeaderText, "Swag Labs", "Incorrect Login Page Header Text!");
         log.info("Verified the Login Page Header Text {} ", loginPageHeaderText);
     }
 
-    @Test(description = "To verify, the landing page as Home Page from Login Page.")
+    @Test(description = "To verify, the landing page as Home Page from Login Page.", groups = {TestGroups.SAUCE_LABS_SMOKE})
     public void testSuccessfulLogin() {
         boolean isLogin = SAUCELABS_PORTAL.get().LOGIN_PAGE.isLoginSuccess("standard_user", "secret_sauce");
-        Assert.assertTrue(isLogin);
+        softAssert.assertTrue(isLogin);
         log.info("Verified the login success status {}", isLogin);
     }
 }
