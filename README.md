@@ -2,7 +2,7 @@
 
 A Web Test Framework for developing regression suites. The test cases can be run locally and in remote server.
 
-STEPS FOR THE TEST EXECUTION
+**STEPS FOR THE TEST EXECUTION**
 
 1. git clone https://github.com/iamcharankumar/web_test_framework.git
 2. cd web_test_framework
@@ -10,7 +10,7 @@ STEPS FOR THE TEST EXECUTION
 4. mvn clean test -Dgroups=SAUCE_LABS_SMOKE,SAUCE_LABS_REGRESSION -Dtestng.parallel=methods -DthreadPoolSize=3
    -Ddataproviderthreadcount=3
 
-### NOTE
+**NOTE**
 
 Run the above maven command (no testng.xml required) with the respective groups and thread counts.
 The screenshot listeners are configured in "pom.xml" under "< property >" tag.
