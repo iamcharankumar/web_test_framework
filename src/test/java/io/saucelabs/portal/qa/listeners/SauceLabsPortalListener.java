@@ -1,7 +1,9 @@
 package io.saucelabs.portal.qa.listeners;
 
-import io.saucelabs.portal.qa.commons.SauceLabsPortalConstant;
 import io.saucelabs.portal.qa.commons.BaseTest;
+import io.saucelabs.portal.qa.commons.web.SauceLabsPortalConstants;
+import io.saucelabs.portal.qa.utils.DiscordUtils;
+import io.saucelabs.portal.qa.utils.TestUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -24,29 +26,38 @@ public class SauceLabsPortalListener extends BaseTest implements ITestListener, 
     @Override
     public void onStart(ISuite suite) {
         startDate = Instant.now();
-        log.info("Sauce Labs Test Suite started executing at {}.", startDate);
+        log.info("Web Test Suite {} started executing at {}.", suite.getName(), startDate);
     }
 
     @Override
-    public void onFinish(ISuite suite) {
+    public void onFinish(ITestContext context) {
         Instant endDate = Instant.now();
         Duration timeElapsed = Duration.between(startDate, endDate);
         log.info("Sauce Labs Test Suite finished executing in {} seconds.", timeElapsed.getSeconds());
+        int passedTestCases = context.getPassedTests().size();
+        int failedTestCases = context.getFailedTests().size();
+        int skippedTestCases = context.getSkippedTests().size();
+        int totalTestCases = passedTestCases + failedTestCases + skippedTestCases;
+        String discordMessage = DiscordUtils.buildDiscordMessage(passedTestCases, failedTestCases, skippedTestCases, totalTestCases);
+        DiscordUtils.sendMessageToChannel(discordMessage);
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
         takeScreenshot(result);
+        log.info("Test Method {} is PASS.", TestUtils.concatenateTestMethodTestData(result, result.getParameters()));
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
         takeScreenshot(result);
+        log.info("Test Method {} is FAIL.", TestUtils.concatenateTestMethodTestData(result, result.getParameters()));
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
         takeScreenshot(result);
+        log.info("Test Method {} SKIP.", TestUtils.concatenateTestMethodTestData(result, result.getParameters()));
     }
 
     private void takeScreenshot(ITestResult testResult) {
@@ -55,20 +66,20 @@ public class SauceLabsPortalListener extends BaseTest implements ITestListener, 
         File destinationFile;
         try {
             if (testResult.isSuccess()) {
-                destinationFile = new File(SauceLabsPortalConstant.DIRECTORY +
-                        SauceLabsPortalConstant.PASS + File.separator
-                        + SauceLabsPortalConstant.PASS_PREFIX
+                destinationFile = new File(SauceLabsPortalConstants.DIRECTORY +
+                        SauceLabsPortalConstants.PASS + File.separator
+                        + SauceLabsPortalConstants.PASS_PREFIX
                         + testResult.getName() + "_" + new Date()
-                        + SauceLabsPortalConstant.IMAGE_FORMAT);
+                        + SauceLabsPortalConstants.IMAGE_FORMAT);
                 FileUtils.copyFile(sourceFile, destinationFile);
                 log.info("Success scenario has been captured. PASSED Screenshot has been placed in the location {}",
                         destinationFile);
             } else {
-                destinationFile = new File(SauceLabsPortalConstant.DIRECTORY
-                        + SauceLabsPortalConstant.FAIL + File.separator
-                        + SauceLabsPortalConstant.FAIL_PREFIX
+                destinationFile = new File(SauceLabsPortalConstants.DIRECTORY
+                        + SauceLabsPortalConstants.FAIL + File.separator
+                        + SauceLabsPortalConstants.FAIL_PREFIX
                         + testResult.getName() + "_" + new Date()
-                        + SauceLabsPortalConstant.IMAGE_FORMAT);
+                        + SauceLabsPortalConstants.IMAGE_FORMAT);
                 FileUtils.copyFile(sourceFile, destinationFile);
                 log.info("Failed scenario has been captured. FAILED Screenshot has been placed in the location {}",
                         destinationFile);

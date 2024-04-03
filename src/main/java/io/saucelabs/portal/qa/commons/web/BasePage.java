@@ -1,4 +1,4 @@
-package io.saucelabs.portal.qa.commons;
+package io.saucelabs.portal.qa.commons.web;
 
 import io.saucelabs.portal.qa.waits.WebBrowserWaiter;
 import org.openqa.selenium.WebDriver;
