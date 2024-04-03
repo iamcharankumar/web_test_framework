@@ -186,3 +186,4 @@ test-output/
 .idea/
 screenshots/
 *.DS_Store
+logs/

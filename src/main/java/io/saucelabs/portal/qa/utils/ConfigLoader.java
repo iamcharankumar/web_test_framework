@@ -1,6 +1,7 @@
 package io.saucelabs.portal.qa.utils;
 
-import io.saucelabs.portal.qa.commons.SauceLabsPortalConstant;
+import io.saucelabs.portal.qa.commons.web.SauceLabsPortalConstants;
+import io.saucelabs.portal.qa.exceptions.DiscordException;
 import io.saucelabs.portal.qa.exceptions.SauceLabsPortalException;
 
 import java.util.Properties;
@@ -11,7 +12,7 @@ public class ConfigLoader {
     private static ConfigLoader instance;
 
     private ConfigLoader() {
-        PROPERTIES = PropertiesHelper.loadProperties(SauceLabsPortalConstant.SAUCELABS_PORTAL_PROPERTIES_FILE);
+        PROPERTIES = PropertiesHelper.loadProperties(SauceLabsPortalConstants.SAUCELABS_PORTAL_PROPERTIES_FILE);
     }
 
     public static ConfigLoader getInstance() {
@@ -71,5 +72,13 @@ public class ConfigLoader {
             return serverUrl;
         else
             throw new SauceLabsPortalException("Server URL is null!");
+    }
+
+    public String getDiscordUrl() {
+        String discordUrl = PROPERTIES.getProperty("discord.url");
+        if (discordUrl != null)
+            return discordUrl;
+        else
+            throw new DiscordException("Discord URL failed to load from the properties file!");
     }
 }
