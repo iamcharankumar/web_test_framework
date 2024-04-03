@@ -29,6 +29,9 @@ A Web Test Framework for developing regression suites. The test cases can be run
 | 4     | rp.project                  | web_tests                    |
 
 #### REPORT PORTAL OUTPUTS
+<img width="1728" alt="Web_Tests_ReportPortal_Launch" src="https://github.com/iamcharankumar/web_test_framework/assets/29479534/51effb54-8318-4705-ab04-fe4431f7e040">
+<img width="1728" alt="Web_Tests_ReportPortal_Test_Methods" src="https://github.com/iamcharankumar/web_test_framework/assets/29479534/ed758683-1e83-4020-acaa-97151941896d">
+<img width="1728" alt="Web_Tests_ReportPortal_Failed" src="https://github.com/iamcharankumar/web_test_framework/assets/29479534/979cfb69-5ba7-4560-b3dc-a4884f9da388">
 
 # STEPS FOR INTEGRATING TEST REPORTS [REPORT PORTAL URL] WITH DISCORD MESSAGE SERVICE
 
@@ -42,6 +45,9 @@ A Web Test Framework for developing regression suites. The test cases can be run
 4. You're ready to execute your tests now. Follow the below section.
 
 #### DISCORD OUTPUTS
+
+<img width="854" alt="Web_Tests_Discord" src="https://github.com/iamcharankumar/web_test_framework/assets/29479534/bb19fb36-6246-43b8-a8ab-5fbc1a373b7b">
+
 
 **STEPS FOR THE TEST EXECUTION**
 
