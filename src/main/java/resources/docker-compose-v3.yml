@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   chrome:
-    image: selenium/node-chrome
+    image: seleniarm/node-chromium:latest
     build:
       context: .
       shm_size: 2gb
@@ -18,7 +18,7 @@ services:
       - SE_VNC_NO_PASSWORD=1
       - TZ=Asia/Kolkata
   selenium-hub:
-    image: selenium/hub
+    image: seleniarm/hub:latest
     container_name: selenium-hub
     environment:
       - SE_JAVA_OPTS=-Xmx512m
