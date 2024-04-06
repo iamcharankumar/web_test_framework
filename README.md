@@ -48,8 +48,7 @@ A Web Test Framework for developing regression suites. The test cases can be run
 
 <img width="854" alt="Web_Tests_Discord" src="https://github.com/iamcharankumar/web_test_framework/assets/29479534/bb19fb36-6246-43b8-a8ab-5fbc1a373b7b">
 
-
-**STEPS FOR THE TEST EXECUTION**
+# STEPS FOR THE TEST EXECUTION
 
 1. git clone https://github.com/iamcharankumar/web_test_framework.git
 2. cd web_test_framework
@@ -70,7 +69,11 @@ The screenshot listeners are configured in "pom.xml" under "< property >" tag.
 
 # DOCKER SETUP FOR SELENIUM GRID
 
-###### Make sure to have the docker desktop and docker compose installed on your machine.
+**Make sure to have the docker desktop and docker compose installed on your machine.**
+
+**NOTE:** Since I'm running the `docker-compose-v3.yml` on Apple Chip, I'm using `docker-seleniarm` images.
+More on the Docker images for Selenium (ARM/NON-ARM)
+read this GitHub's [README](https://github.com/seleniumhq-community/docker-seleniarm).
 
 `docker ps -a`
 
@@ -87,3 +90,5 @@ The screenshot listeners are configured in "pom.xml" under "< property >" tag.
 ###### To kill a session in the selenium grid.
 
 `curl -X DELETE http://localhost:4444/wd/hub/session/{session_id}`
+
+#### SELENIUM GRID OUTPUT
