@@ -6,6 +6,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ApiConstants {
 
-    public static final String WEBHOOK_TOKEN = "/1225065536031948801/hWVql9rfc6zYbulBz4EHuN7yUvYmF3b55YrJlz7YXH86cMp_jjyhdCSPQpbfbbFJNui0";
+    public static final String WEBHOOK_TOKEN = "{your_web_hook_token}";
     public static final String CONTENT_TYPE = "application/json";
 }
