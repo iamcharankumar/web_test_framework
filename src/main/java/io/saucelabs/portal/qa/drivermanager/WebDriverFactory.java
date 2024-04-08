@@ -1,5 +1,6 @@
 package io.saucelabs.portal.qa.drivermanager;
 
+import io.saucelabs.portal.qa.commons.web.SauceLabsPortalConstants;
 import io.saucelabs.portal.qa.exceptions.UnSupportedBrowserException;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
@@ -20,18 +21,11 @@ public class WebDriverFactory {
     protected String browserName;
 
     public WebDriver createLocalBrowserSession() {
-        WebDriver driver;
-        switch (browserName.toLowerCase()) {
-            case "chrome":
-                driver = new ChromeDriver();
-                break;
-            case "firefox":
-                driver = new FirefoxDriver();
-                break;
-            default:
-                throw new UnSupportedBrowserException("Accepted browsers are Chrome or Firefox.");
-        }
-        return driver;
+        return switch (browserName.toLowerCase()) {
+            case "chrome" -> new ChromeDriver();
+            case "firefox" -> new FirefoxDriver();
+            default -> throw new UnSupportedBrowserException("Accepted browsers are Chrome or Firefox.");
+        };
     }
 
     @SneakyThrows
@@ -43,7 +37,7 @@ public class WebDriverFactory {
                 options.setAcceptInsecureCerts(true);
                 options.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
                 options.setImplicitWaitTimeout(Duration.ofSeconds(5));
-                options.addArguments("--start-maximized");
+                options.addArguments(SauceLabsPortalConstants.MAXIMIZE);
                 driver = new RemoteWebDriver(new URL(url), options);
                 break;
             case "firefox":
