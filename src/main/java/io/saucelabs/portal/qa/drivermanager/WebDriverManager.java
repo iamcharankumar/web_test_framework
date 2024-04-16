@@ -14,15 +14,15 @@ public class WebDriverManager implements DriverManager<WebDriver> {
 
     @Override
     public WebDriver getDriver() {
-        String runMode = ConfigLoader.getInstance().getRunMode();
+        String runMode = System.getProperty("runmode");
         String server = ConfigLoader.getInstance().getServerUrl();
-        String browserName = ConfigLoader.getInstance().getBrowser();
+        String browserName = System.getProperty("browser");
         WebDriverFactory webDriverFactory = new WebDriverFactory(browserName);
         if (runMode.equalsIgnoreCase("remote")) {
-            log.info("Executing the test cases in remote server {}", server);
+            log.info("Executing the test cases in run mode {} and browser {}", runMode, browserName);
             return webDriverFactory.createRemoteBrowserSession(server);
         } else {
-            log.info("Executing the test cases in local machine.");
+            log.info("Executing the test cases in local machine in the browser {}.", browserName);
             return webDriverFactory.createLocalBrowserSession();
         }
     }
