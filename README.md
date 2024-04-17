@@ -57,9 +57,10 @@ A Web Test Framework for developing regression suites. The test cases can be run
    -Ddataproviderthreadcount=3
 
 **NOTE**
-
-Run the above maven command (no testng.xml required) with the respective groups and thread counts.
-The screenshot listeners are configured in "pom.xml" under "< property >" tag.
+1. -Drunmode=remote or -Drunmode=local (default value is `local`)
+2. -Dbrowser=chrome or -Drunmode=firefox (default value is `chrome`)
+3. Run the above maven command (no testng.xml required) with the respective groups and thread counts.
+   The screenshot listeners are configured in "pom.xml" under "< property >" tag.
 
 # PROPERTIES SETUP FOR SELENIUM GRID
 
