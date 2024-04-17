@@ -12,6 +12,8 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <browser>chrome</browser>
+        <runmode>local</runmode>
     </properties>
 
     <dependencies>
@@ -45,11 +47,6 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>2.0.6</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>2.0.9</version>
         </dependency>
         <dependency>
             <groupId>org.zeroturnaround</groupId>
@@ -100,6 +97,10 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
                 <configuration>
+                    <systemPropertyVariables>
+                        <browser>${browser}</browser>
+                        <runmode>${runmode}</runmode>
+                    </systemPropertyVariables>
                     <properties>
                         <property>
                             <name>listener</name>

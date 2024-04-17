@@ -18,6 +18,10 @@ public final class SauceLabsPortalConstants {
     public static final String FAIL_PREFIX = "FAILED_";
     public static final String IMAGE_FORMAT = ".png";
 
+    public static final String RUN_MODE = "runmode";
+    public static final String BROWSER = "browser";
+    public static final String REMOTE = "remote";
+
     // DISCORD API
     public static final String DISCORD_WEBHOOK = ConfigLoader.getInstance().getDiscordUrl() + "/api/webhooks";
 }

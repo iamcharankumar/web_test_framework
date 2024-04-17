@@ -49,23 +49,7 @@ public class ConfigLoader {
         else
             throw new SauceLabsPortalException("Sauce Labs Portal Password is null!");
     }
-
-    public String getRunMode() {
-        String runMode = PROPERTIES.getProperty("runmode");
-        if (runMode != null)
-            return runMode;
-        else
-            throw new SauceLabsPortalException("Run Mode is null!");
-    }
-
-    public String getBrowser() {
-        String browser = PROPERTIES.getProperty("browser");
-        if (browser != null)
-            return browser;
-        else
-            throw new SauceLabsPortalException("Browser is null!");
-    }
-
+    
     public String getServerUrl() {
         String serverUrl = PROPERTIES.getProperty("server");
         if (serverUrl != null)
