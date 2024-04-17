@@ -1,5 +1,6 @@
 package io.saucelabs.portal.qa.drivermanager;
 
+import io.saucelabs.portal.qa.commons.web.SauceLabsPortalConstants;
 import io.saucelabs.portal.qa.utils.ConfigLoader;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,17 +15,14 @@ public class WebDriverManager implements DriverManager<WebDriver> {
 
     @Override
     public WebDriver getDriver() {
-        String runMode = System.getProperty("runmode");
+        String runMode = System.getProperty(SauceLabsPortalConstants.RUN_MODE);
         String server = ConfigLoader.getInstance().getServerUrl();
-        String browserName = System.getProperty("browser");
+        String browserName = System.getProperty(SauceLabsPortalConstants.BROWSER);
         WebDriverFactory webDriverFactory = new WebDriverFactory(browserName);
-        if (runMode.equalsIgnoreCase("remote")) {
-            log.info("Executing the test cases in run mode {} and browser {}", runMode, browserName);
+        if (runMode.equalsIgnoreCase(SauceLabsPortalConstants.REMOTE))
             return webDriverFactory.createRemoteBrowserSession(server);
-        } else {
-            log.info("Executing the test cases in local machine in the browser {}.", browserName);
+        else
             return webDriverFactory.createLocalBrowserSession();
-        }
     }
 
     @Override
