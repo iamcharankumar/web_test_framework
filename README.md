@@ -86,7 +86,7 @@ read this GitHub's [README](https://github.com/seleniumhq-community/docker-selen
 
 ###### To spin up 10 nodes in the grid we use --scale before the node's name.
 
-`docker compose -f docker-compose-v3.yml up --scale chrome=10`
+`docker-compose -f docker-compose-v3.yml up --scale chrome=10 -d --force-recreate`
 
 ###### To kill a session in the selenium grid.
 
