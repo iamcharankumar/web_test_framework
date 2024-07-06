@@ -12,6 +12,6 @@ public abstract class BasePage {
     protected BasePage(WebDriver driver) {
         this.driver = driver;
         this.waiter = new WebBrowserWaiter(this.driver);
-        this.longWaiter = new WebBrowserWaiter(this.driver);
+        this.longWaiter = new WebBrowserWaiter(this.driver, 10);
     }
 }

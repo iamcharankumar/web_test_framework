@@ -18,6 +18,9 @@ public class SauceLabsPortalTestBase extends BaseTest {
         log.info("Thread id in BeforeMethod for the test method : {} is {}.", method.getName(), Thread.currentThread().getId());
         SAUCELABS_PORTAL.set(new SauceLabsPortal(driver.get()));
         SAUCELABS_PORTAL.get().visit();
+        SAUCELABS_PORTAL.get().enableChromeDevTools();
+        SAUCELABS_PORTAL.get().enableBrowserNetwork();
+        SAUCELABS_PORTAL.get().monitorPortalRequest();
         driver.get().navigate().refresh();
         driver.get().manage().window().maximize();
         SAUCELABS_PORTAL.get().LOGIN_PAGE.isLoginSuccess(SAUCELABS_PORTAL.get().getSAUCELABS_USERNAME(), SAUCELABS_PORTAL.get().getSAUCELABS_PASSWORD());

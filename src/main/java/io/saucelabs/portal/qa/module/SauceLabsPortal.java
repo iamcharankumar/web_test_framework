@@ -1,5 +1,6 @@
 package io.saucelabs.portal.qa.module;
 
+import io.saucelabs.portal.qa.devtools.ChromeDevTools;
 import io.saucelabs.portal.qa.pages.CartPage;
 import io.saucelabs.portal.qa.pages.HomePage;
 import io.saucelabs.portal.qa.pages.LoginPage;
@@ -15,6 +16,7 @@ public class SauceLabsPortal {
     public final String SAUCELABS_USERNAME;
     @Getter
     public final String SAUCELABS_PASSWORD;
+    private final ChromeDevTools CHROME_DEV_TOOLS;
 
     public final LoginPage LOGIN_PAGE;
     public final HomePage HOME_PAGE;
@@ -22,6 +24,7 @@ public class SauceLabsPortal {
 
     public SauceLabsPortal(WebDriver driver) {
         this.SAUCELABS_WEBDRIVER = driver;
+        this.CHROME_DEV_TOOLS = new ChromeDevTools(driver);
         this.SAUCELABS_URL = ConfigLoader.getInstance().getSauceLabsPortalUrl();
         this.SAUCELABS_USERNAME = ConfigLoader.getInstance().getSauceLabsPortalUserName();
         this.SAUCELABS_PASSWORD = ConfigLoader.getInstance().getSauceLabsPortalPassword();
@@ -32,5 +35,17 @@ public class SauceLabsPortal {
 
     public void visit() {
         SAUCELABS_WEBDRIVER.navigate().to(SAUCELABS_URL);
+    }
+
+    public void enableChromeDevTools() {
+        CHROME_DEV_TOOLS.enableDevTools();
+    }
+
+    public void enableBrowserNetwork() {
+        CHROME_DEV_TOOLS.enableNetwork();
+    }
+
+    public void monitorPortalRequest() {
+        CHROME_DEV_TOOLS.monitorRequest();
     }
 }
