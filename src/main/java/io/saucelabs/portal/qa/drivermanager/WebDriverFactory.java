@@ -22,30 +22,26 @@ public class WebDriverFactory {
 
     public WebDriver createLocalBrowserSession() {
         return switch (browserName.toLowerCase()) {
-            case "chrome" -> new ChromeDriver();
-            case "firefox" -> new FirefoxDriver();
+            case SauceLabsPortalConstants.CHROME_BROWSER -> new ChromeDriver();
+            case SauceLabsPortalConstants.FIREFOX_BROWSER -> new FirefoxDriver();
             default -> throw new UnSupportedBrowserException("Accepted browsers are Chrome or Firefox.");
         };
     }
 
     @SneakyThrows
     public WebDriver createRemoteBrowserSession(String url) {
-        WebDriver driver;
         switch (browserName.toLowerCase()) {
-            case "chrome":
+            case SauceLabsPortalConstants.CHROME_BROWSER:
                 ChromeOptions options = new ChromeOptions();
                 options.setAcceptInsecureCerts(true);
                 options.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
                 options.setImplicitWaitTimeout(Duration.ofSeconds(5));
                 options.addArguments(SauceLabsPortalConstants.MAXIMIZE);
-                driver = new RemoteWebDriver(new URL(url), options);
-                break;
-            case "firefox":
-                driver = new RemoteWebDriver(new URL(url), new FirefoxOptions());
-                break;
+                return new RemoteWebDriver(new URL(url), options);
+            case SauceLabsPortalConstants.FIREFOX_BROWSER:
+                return new RemoteWebDriver(new URL(url), new FirefoxOptions());
             default:
                 throw new UnSupportedBrowserException("Accepted browsers are Chrome or Firefox.");
         }
-        return driver;
     }
 }
