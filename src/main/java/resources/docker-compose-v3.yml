@@ -2,10 +2,9 @@ version: '3.7'
 services:
   chrome:
     image: seleniarm/node-chromium:latest
-    build:
-      context: .
-      shm_size: 2gb
-    shm_size: 2gb
+    volumes:
+      - /dev/shm:/dev/shm
+    shm_size: 3gb
     depends_on:
       - selenium-hub
     environment:
@@ -21,7 +20,7 @@ services:
     image: seleniarm/hub:latest
     container_name: selenium-hub
     environment:
-      - SE_JAVA_OPTS=-Xmx512m
+      - SE_JAVA_OPTS=-Xmx1024m
       - SE_OPTS=--allow-cors true
     ports:
       - "4442:4442"

@@ -3,7 +3,7 @@ package io.saucelabs.portal.qa.module;
 import io.saucelabs.portal.qa.pages.CartPage;
 import io.saucelabs.portal.qa.pages.HomePage;
 import io.saucelabs.portal.qa.pages.LoginPage;
-import io.saucelabs.portal.qa.utils.ConfigLoader;
+import io.saucelabs.portal.qa.utils.WebConfigLoader;
 import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -21,10 +21,11 @@ public class SauceLabsPortal {
     public final CartPage CART_PAGE;
 
     public SauceLabsPortal(WebDriver driver) {
+        WebConfigLoader configLoader = WebConfigLoader.getInstance();
         this.SAUCELABS_WEBDRIVER = driver;
-        this.SAUCELABS_URL = ConfigLoader.getInstance().getSauceLabsPortalUrl();
-        this.SAUCELABS_USERNAME = ConfigLoader.getInstance().getSauceLabsPortalUserName();
-        this.SAUCELABS_PASSWORD = ConfigLoader.getInstance().getSauceLabsPortalPassword();
+        this.SAUCELABS_URL = configLoader.getSauceLabsPortalUrl();
+        this.SAUCELABS_USERNAME = configLoader.getSauceLabsPortalUserName();
+        this.SAUCELABS_PASSWORD = configLoader.getSauceLabsPortalPassword();
         LOGIN_PAGE = PageFactory.initElements(this.SAUCELABS_WEBDRIVER, LoginPage.class);
         HOME_PAGE = PageFactory.initElements(this.SAUCELABS_WEBDRIVER, HomePage.class);
         CART_PAGE = PageFactory.initElements(this.SAUCELABS_WEBDRIVER, CartPage.class);

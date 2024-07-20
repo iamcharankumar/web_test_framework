@@ -6,20 +6,20 @@ import io.saucelabs.portal.qa.exceptions.SauceLabsPortalException;
 
 import java.util.Properties;
 
-public class ConfigLoader {
+public class WebConfigLoader {
 
     private final Properties PROPERTIES;
-    private static ConfigLoader instance;
+    private static WebConfigLoader instance;
 
-    private ConfigLoader() {
-        PROPERTIES = PropertiesHelper.loadProperties(SauceLabsPortalConstants.SAUCELABS_PORTAL_PROPERTIES_FILE);
+    private WebConfigLoader() {
+        PROPERTIES = PropertyUtils.loadProperties(SauceLabsPortalConstants.SAUCELABS_PORTAL_PROPERTIES_FILE);
     }
 
-    public static ConfigLoader getInstance() {
+    public static WebConfigLoader getInstance() {
         if (instance == null) {
-            synchronized (ConfigLoader.class) {
+            synchronized (WebConfigLoader.class) {
                 if (instance == null) {
-                    instance = new ConfigLoader();
+                    instance = new WebConfigLoader();
                 }
             }
         }
@@ -49,7 +49,7 @@ public class ConfigLoader {
         else
             throw new SauceLabsPortalException("Sauce Labs Portal Password is null!");
     }
-    
+
     public String getServerUrl() {
         String serverUrl = PROPERTIES.getProperty("server");
         if (serverUrl != null)

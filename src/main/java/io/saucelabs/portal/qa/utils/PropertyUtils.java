@@ -8,7 +8,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 @Slf4j
-public class PropertiesHelper {
+public class PropertyUtils {
 
     public static Properties loadProperties(String fileName) {
         Properties properties;

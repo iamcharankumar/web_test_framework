@@ -1,6 +1,6 @@
 package io.saucelabs.portal.qa.commons.web;
 
-import io.saucelabs.portal.qa.utils.ConfigLoader;
+import io.saucelabs.portal.qa.utils.WebConfigLoader;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -13,7 +13,6 @@ public final class SauceLabsPortalConstants {
     public static final String CHROME_BROWSER = "chrome";
     public static final String FIREFOX_BROWSER = "firefox";
 
-    public static final String MAXIMIZE = "--start-maximized";
     public static final String DIRECTORY = System.getProperty("user.dir") + "/src/test/java/screenshots";
     public static final String PASS = "/passed_screenshots/";
 
@@ -25,7 +24,8 @@ public final class SauceLabsPortalConstants {
     public static final String RUN_MODE = "runmode";
     public static final String BROWSER = "browser";
     public static final String REMOTE = "remote";
+    public static final String HEADLEESS = "headless";
 
     // DISCORD API
-    public static final String DISCORD_WEBHOOK = ConfigLoader.getInstance().getDiscordUrl() + "/api/webhooks";
+    public static final String DISCORD_WEBHOOK = WebConfigLoader.getInstance().getDiscordUrl() + "/api/webhooks";
 }

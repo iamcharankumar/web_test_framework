@@ -17,7 +17,7 @@ import java.time.Instant;
 import java.util.Date;
 
 @Slf4j
-public class SauceLabsPortalListener extends BaseTest implements ITestListener, ISuiteListener, IRetryAnalyzer {
+public class WebTestListener extends BaseTest implements ITestListener, ISuiteListener, IRetryAnalyzer {
 
     private Instant startDate;
     private int COUNT = 0;
