@@ -13,13 +13,16 @@ A Web Test Framework for developing regression suites. The test cases can be run
 3. Verify login http://localhost:8080/ui/#login with `default\1q2w3e` or `superadmin\erebus`
 4. Create a blank project and copy and paste the below config in `reportportal.properties` under `src/test/resources`.
    See the table below.
-5. Read these great posts written below by [Automation Hacks](https://github.com/automationhacks) to configure the Report
+5. Read these great posts written below by [Automation Hacks](https://github.com/automationhacks) to configure the
+   Report
    portal.
    By far, these are the only posts with accurate steps.
-   1. Further reading on setting up the reportportal
-      is [here](https://automationhacks.io/2020/03/02/how-to-setup-reportportal-on-a-local-docker-instance/).
-   2. Further reading on configuring logback with reportportal to push logs
-      is [here](https://automationhacks.io/2020/09/25/logging-integration-with-logback-testng-in-report-portal/).
+    1. Further reading on setting up the reportportal
+       is [here](https://automationhacks.io/2020/03/02/how-to-setup-reportportal-on-a-local-docker-instance/).
+    2. Further reading on configuring logback with reportportal to push logs
+       is [here](https://automationhacks.io/2020/09/25/logging-integration-with-logback-testng-in-report-portal/).
+6. All the below configurations are made dynamic and configured in the `ReportPortalOverrideParameters` class.
+7. The ReportPortal Listener is also made dynamic and can be found in the `ReportPortalConfigListener` class.
 
 | Sl.No | Report portal Property Name | Report portal Property Value |
 |-------|-----------------------------|------------------------------|
@@ -29,6 +32,7 @@ A Web Test Framework for developing regression suites. The test cases can be run
 | 4     | rp.project                  | web_tests                    |
 
 #### REPORT PORTAL OUTPUTS
+
 <img width="1728" alt="Web_Tests_ReportPortal_Launch" src="https://github.com/iamcharankumar/web_test_framework/assets/29479534/51effb54-8318-4705-ab04-fe4431f7e040">
 <img width="1728" alt="Web_Tests_ReportPortal_Test_Methods" src="https://github.com/iamcharankumar/web_test_framework/assets/29479534/ed758683-1e83-4020-acaa-97151941896d">
 <img width="1728" alt="Web_Tests_ReportPortal_Failed" src="https://github.com/iamcharankumar/web_test_framework/assets/29479534/979cfb69-5ba7-4560-b3dc-a4884f9da388">
@@ -57,6 +61,7 @@ A Web Test Framework for developing regression suites. The test cases can be run
    -Ddataproviderthreadcount=3
 
 **NOTE**
+
 1. -Drunmode=remote or -Drunmode=local (default value is `local`)
 2. -Dbrowser=chrome or -Drunmode=firefox (default value is `chrome`)
 3. Run the above maven command (no testng.xml required) with the respective groups and thread counts.
