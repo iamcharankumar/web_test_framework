@@ -25,8 +25,11 @@ public class SauceLabsPortalListener extends BaseTest implements ITestListener, 
 
     @Override
     public void onStart(ISuite suite) {
+        String browserName = System.getProperty(SauceLabsPortalConstants.BROWSER);
+        String runMode = System.getProperty(SauceLabsPortalConstants.RUN_MODE);
         startDate = Instant.now();
         log.info("Web Test Suite {} started executing at {}.", suite.getName(), startDate);
+        log.info("Browser: {} | Run Mode: {}", browserName, runMode);
     }
 
     @Override

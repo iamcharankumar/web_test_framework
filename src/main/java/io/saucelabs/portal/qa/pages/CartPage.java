@@ -14,9 +14,6 @@ public class CartPage extends SauceLabsBasePage {
     @FindBy(className = "title")
     private WebElement yourCartTitle;
 
-    @FindBy(className = "shopping_cart_badge")
-    private WebElement cartProductCount;
-
     @FindBy(className = "cart_quantity_label")
     private WebElement cartQuantityLabel;
 
@@ -33,30 +30,35 @@ public class CartPage extends SauceLabsBasePage {
     private List<WebElement> inventoryItemDescriptions;
 
     public String getYourCartTitle() {
-        return yourCartTitle.getText();
-    }
-
-    public int getCartProductCount() {
-        return Integer.parseInt(cartProductCount.getText());
+        String cartTitleText = yourCartTitle.getText();
+        validateNonEmptyText(cartTitleText, "The Cart title text is empty!");
+        return cartTitleText;
     }
 
     public String getCartQuantityText() {
-        return cartQuantityLabel.getText();
+        String cartQuantityText = cartQuantityLabel.getText();
+        validateNonEmptyText(cartQuantityText, "Cart Quantity Text is empty!");
+        return cartQuantityText;
     }
 
     public String getCartDescriptionText() {
-        return cartDescriptionLabel.getText();
+        String cartDescriptionText = cartDescriptionLabel.getText();
+        validateNonEmptyText(cartDescriptionText, "The Cart Description text is empty!");
+        return cartDescriptionText;
     }
 
     public List<WebElement> getInventoryItemNames() {
+        validateAction(inventoryItemNames.isEmpty(), "Inventory Item Names List is empty!");
         return inventoryItemNames;
     }
 
     public List<WebElement> getInventoryItemPrices() {
+        validateAction(inventoryItemPrices.isEmpty(), "Inventory Item Prices List is empty!");
         return inventoryItemPrices;
     }
 
     public List<WebElement> getInventoryItemDescriptions() {
+        validateAction(inventoryItemDescriptions.isEmpty(), "Inventory Item Descriptions List is empty!");
         return inventoryItemDescriptions;
     }
 }

@@ -70,35 +70,41 @@ public class HomePage extends SauceLabsBasePage {
     private WebElement addToCartSauceLabsRedTShirt;
 
     public String getHomePageHeaderText() {
-        return homePageHeader.getText();
+        String homePageHeaderText = homePageHeader.getText();
+        validateNonEmptyText(homePageHeaderText, "Home Page Header Text is empty!");
+        return homePageHeaderText;
     }
 
     public String getProductHeaderText() {
-        return productHeader.getText();
+        String productHeaderText = productHeader.getText();
+        validateNonEmptyText(productHeaderText, "Product Header Text is empty!");
+        return productHeaderText;
     }
 
     public boolean isShoppingCartLinkEnabled() {
-        return shoppingCartLink.isEnabled();
+        validateAction(shoppingCartLink.isEnabled(), "Shopping Cart Link is not enabled!");
+        return true;
     }
 
     public boolean isShoppingCartLinkClicked() {
-        if (isShoppingCartLinkEnabled()) {
-            shoppingCartLink.click();
-            return true;
-        }
-        return false;
+        clickElement(shoppingCartLink, "Shopping Cart Link is not clicked!");
+        return true;
     }
 
     public String sortNameAtoZ() {
         Select sortAtoZ = new Select(productSortContainer);
         sortAtoZ.selectByVisibleText("Name (A to Z)");
-        return sauceLabsBackpackText.getText();
+        String backPackText = sauceLabsBackpackText.getText();
+        validateNonEmptyText(backPackText, "Backpack Text is empty!");
+        return backPackText;
     }
 
     public String sortNameZtoA() {
         Select sortZtoA = new Select(productSortContainer);
         sortZtoA.selectByVisibleText("Name (Z to A)");
-        return redTshirtText.getText();
+        String redTShirt = redTshirtText.getText();
+        validateNonEmptyText(redTShirt, "Red Tshirt Text is empty!");
+        return redTShirt;
     }
 
     public List<WebElement> getInventoryItemNames() {
@@ -112,64 +118,52 @@ public class HomePage extends SauceLabsBasePage {
     public String getAllItemsText() {
         homePageBurgerMenu.click();
         waiter.waitForVisibilityOf(allItems);
-        if (allItems.isEnabled())
-            return allItems.getText();
-        else
-            return null;
+        validateAction(allItems.isEnabled(), "All Items not enabled!");
+        return allItems.getText();
     }
 
     public String getAboutText() {
         homePageBurgerMenu.click();
         waiter.waitForVisibilityOf(about);
-        if (about.isEnabled())
-            return about.getText();
-        else
-            return null;
+        validateAction(about.isEnabled(), "About not enabled!");
+        return about.getText();
     }
 
     public String getLogoutText() {
         homePageBurgerMenu.click();
         waiter.waitForVisibilityOf(logout);
-        if (logout.isEnabled())
-            return logout.getText();
-        else
-            return null;
+        validateAction(logout.isEnabled(), "Logout is not enabled!");
+        return logout.getText();
     }
 
     public String getResetAppStateText() {
         homePageBurgerMenu.click();
         waiter.waitForVisibilityOf(resetAppState);
-        if (resetAppState.isEnabled())
-            return resetAppState.getText();
-        else
-            return null;
+        validateAction(resetAppState.isEnabled(), "Reset App State not enabled!");
+        return resetAppState.getText();
     }
 
     public boolean isProductAddedToCart(String productName) {
+        boolean isProductPresent = inventoryItemNames.stream().map(WebElement::getText).anyMatch(name -> name.equals(productName));
+        validateAction(isProductPresent, "Sauce Labs Backpack not present!");
         switch (productName) {
             case "Sauce Labs Backpack":
-                if (addToCardSauceLabsBackpack.isEnabled() && getInventoryItemNames().stream().map(WebElement::getText).anyMatch(name -> name.equals(productName)))
-                    addToCardSauceLabsBackpack.click();
+                clickElement(addToCardSauceLabsBackpack, "Sauce Labs Backpack not clicked!");
                 break;
             case "Sauce Labs Bike Light":
-                if (addToCartSauceLabsBikeLight.isEnabled() && getInventoryItemNames().stream().map(WebElement::getText).anyMatch(name -> name.equals(productName)))
-                    addToCartSauceLabsBikeLight.click();
+                clickElement(addToCartSauceLabsBikeLight, "Sauce Labs Bike Light not clicked!");
                 break;
             case "Sauce Labs Bolt T-Shirt":
-                if (addToCardSauceLabsBoltTShirt.isEnabled() && getInventoryItemNames().stream().map(WebElement::getText).anyMatch(name -> name.equals(productName)))
-                    addToCardSauceLabsBoltTShirt.click();
+                clickElement(addToCardSauceLabsBoltTShirt, "Sauce Labs Bolt T-Shirt not clicked!");
                 break;
             case "Sauce Labs Fleece Jacket":
-                if (addToCartSauceLabsFleeceJacket.isEnabled() && getInventoryItemNames().stream().map(WebElement::getText).anyMatch(name -> name.equals(productName)))
-                    addToCartSauceLabsFleeceJacket.click();
+                clickElement(addToCartSauceLabsFleeceJacket, "Sauce Labs Fleece Jacket not clicked!");
                 break;
             case "Sauce Labs Onesie":
-                if (addToCartSauceLabsOneSize.isEnabled() && getInventoryItemNames().stream().map(WebElement::getText).anyMatch(name -> name.equals(productName)))
-                    addToCartSauceLabsOneSize.click();
+                clickElement(addToCartSauceLabsOneSize, "Sauce Labs Onesie not clicked!");
                 break;
             case "Test.allTheThings() T-Shirt (Red)":
-                if (addToCartSauceLabsRedTShirt.isEnabled() && getInventoryItemNames().stream().map(WebElement::getText).anyMatch(name -> name.equals(productName)))
-                    addToCartSauceLabsRedTShirt.click();
+                clickElement(addToCartSauceLabsRedTShirt, "Test.allTheThings() T-Shirt (Red) not clicked!");
                 break;
             default:
                 return false;

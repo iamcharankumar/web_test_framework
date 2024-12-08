@@ -1,9 +1,8 @@
 package io.saucelabs.portal.qa.utils;
 
 import io.saucelabs.portal.qa.commons.web.SauceLabsPortalConstants;
-import io.saucelabs.portal.qa.exceptions.DiscordException;
-import io.saucelabs.portal.qa.exceptions.SauceLabsPortalException;
 
+import java.util.Objects;
 import java.util.Properties;
 
 public class ConfigLoader {
@@ -12,7 +11,7 @@ public class ConfigLoader {
     private static ConfigLoader instance;
 
     private ConfigLoader() {
-        PROPERTIES = PropertiesHelper.loadProperties(SauceLabsPortalConstants.SAUCELABS_PORTAL_PROPERTIES_FILE);
+        PROPERTIES = PropertyUtils.loadProperties(SauceLabsPortalConstants.SAUCELABS_PORTAL_PROPERTIES_FILE);
     }
 
     public static ConfigLoader getInstance() {
@@ -27,42 +26,28 @@ public class ConfigLoader {
     }
 
     public String getSauceLabsPortalUrl() {
-        String sauceLabsPortalUrl = PROPERTIES.getProperty("saucelabs.url");
-        if (sauceLabsPortalUrl != null)
-            return sauceLabsPortalUrl;
-        else
-            throw new SauceLabsPortalException("Sauce Labs Portal URL is null!");
+        return getPropertyValue("saucelabs.url");
     }
 
     public String getSauceLabsPortalUserName() {
-        String sauceLabsPortalUserName = PROPERTIES.getProperty("username");
-        if (sauceLabsPortalUserName != null)
-            return sauceLabsPortalUserName;
-        else
-            throw new SauceLabsPortalException("Sauce Labs Portal Username is null!");
+        return getPropertyValue("username");
     }
 
     public String getSauceLabsPortalPassword() {
-        String sauceLabsPortalPassword = PROPERTIES.getProperty("password");
-        if (sauceLabsPortalPassword != null)
-            return sauceLabsPortalPassword;
-        else
-            throw new SauceLabsPortalException("Sauce Labs Portal Password is null!");
+        return getPropertyValue("password");
     }
-    
+
     public String getServerUrl() {
-        String serverUrl = PROPERTIES.getProperty("server");
-        if (serverUrl != null)
-            return serverUrl;
-        else
-            throw new SauceLabsPortalException("Server URL is null!");
+        return getPropertyValue("server");
     }
 
     public String getDiscordUrl() {
-        String discordUrl = PROPERTIES.getProperty("discord.url");
-        if (discordUrl != null)
-            return discordUrl;
-        else
-            throw new DiscordException("Discord URL failed to load from the properties file!");
+        return getPropertyValue("discord.url");
+    }
+
+    private String getPropertyValue(String propertyKey) {
+        String propertyValue = PROPERTIES.getProperty(propertyKey);
+        Objects.requireNonNull(propertyKey, "Property Value for Property Key: " + propertyKey + " is empty!");
+        return propertyValue;
     }
 }

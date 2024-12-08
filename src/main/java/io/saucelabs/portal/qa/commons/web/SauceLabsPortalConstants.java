@@ -21,7 +21,8 @@ public final class SauceLabsPortalConstants {
     public static final String RUN_MODE = "runmode";
     public static final String BROWSER = "browser";
     public static final String REMOTE = "remote";
+    public static final ConfigLoader CONFIG_LOADER = ConfigLoader.getInstance();
 
     // DISCORD API
-    public static final String DISCORD_WEBHOOK = ConfigLoader.getInstance().getDiscordUrl() + "/api/webhooks";
+    public static final String DISCORD_WEBHOOK = CONFIG_LOADER.getDiscordUrl() + "/api/webhooks";
 }
