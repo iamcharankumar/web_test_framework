@@ -92,6 +92,9 @@ read this GitHub's [README](https://github.com/seleniumhq-community/docker-selen
 
 `curl -X DELETE http://localhost:4444/wd/hub/session/{session_id}`
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=iamcharankumar/web_test_framework&type=Date)](https://star-history.com/#iamcharankumar/web_test_framework&Date)
 #### SELENIUM GRID OUTPUT
 
 <img width="1728" alt="Selenium_Grid_Output" src="https://github.com/iamcharankumar/web_test_framework/assets/29479534/c94df587-e4b5-4199-ab94-c9bbf327ae58">
