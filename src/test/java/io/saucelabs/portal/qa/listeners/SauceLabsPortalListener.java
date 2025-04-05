@@ -1,6 +1,6 @@
 package io.saucelabs.portal.qa.listeners;
 
-import io.saucelabs.portal.qa.commons.BaseTest;
+import io.saucelabs.portal.qa.commons.WebBaseTest;
 import io.saucelabs.portal.qa.commons.web.SauceLabsPortalConstants;
 import io.saucelabs.portal.qa.utils.DiscordUtils;
 import io.saucelabs.portal.qa.utils.TestUtils;
@@ -17,7 +17,7 @@ import java.time.Instant;
 import java.util.Date;
 
 @Slf4j
-public class SauceLabsPortalListener extends BaseTest implements ITestListener, ISuiteListener, IRetryAnalyzer {
+public class SauceLabsPortalListener extends WebBaseTest implements ITestListener, ISuiteListener, IRetryAnalyzer {
 
     private Instant startDate;
     private int COUNT = 0;

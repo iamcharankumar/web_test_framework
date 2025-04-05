@@ -1,6 +1,6 @@
 package io.saucelabs.portal.qa.browsermanager;
 
-public interface DriverManager<T> {
+public interface IDriverManager<T> {
 
     T getDriver();
 

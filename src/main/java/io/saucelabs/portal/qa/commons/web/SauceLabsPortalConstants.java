@@ -9,7 +9,6 @@ public final class SauceLabsPortalConstants {
 
     public static final String SAUCELABS_PORTAL_PROPERTIES_FILE = System.getProperty("user.dir")
             + "/src/main/java/resources/config.properties";
-    public static final String MAXIMIZE = "--start-maximized";
     public static final String DIRECTORY = System.getProperty("user.dir") + "/src/test/java/screenshots";
     public static final String PASS = "/passed_screenshots/";
 

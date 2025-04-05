@@ -1,6 +1,6 @@
 package io.saucelabs.portal.qa.commons;
 
-import io.saucelabs.portal.qa.browsermanager.DriverManager;
+import io.saucelabs.portal.qa.browsermanager.IDriverManager;
 import io.saucelabs.portal.qa.browsermanager.WebDriverManager;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
@@ -10,10 +10,10 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.asserts.SoftAssert;
 
 @Slf4j
-public abstract class BaseTest {
+public abstract class WebBaseTest {
 
     protected static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
-    private static DriverManager<WebDriver> driverManager;
+    private static IDriverManager<WebDriver> driverManager;
     protected SoftAssert softAssert = new SoftAssert();
 
     @BeforeSuite(alwaysRun = true)

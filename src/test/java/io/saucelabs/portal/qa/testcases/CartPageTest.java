@@ -1,6 +1,6 @@
 package io.saucelabs.portal.qa.testcases;
 
-import io.saucelabs.portal.qa.constants.TestGroups;
+import io.saucelabs.portal.qa.constants.WebTestGroups;
 import io.saucelabs.portal.qa.testdata.SauceLabsDataProvider;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
@@ -11,7 +11,7 @@ import java.util.List;
 @Slf4j
 public class CartPageTest extends SauceLabsPortalTestBase {
 
-    @Test(description = "To verify, the cart page title.", groups = {TestGroups.SAUCE_LABS_SMOKE})
+    @Test(description = "To verify, the cart page title.", groups = {WebTestGroups.SAUCE_LABS_SMOKE})
     public void testCartPageTitleText() {
         boolean isCartClicked = SAUCELABS_PORTAL.get().HOME_PAGE.isShoppingCartLinkClicked();
         softAssert.assertTrue(isCartClicked, "Shopping Cart Link click failed!");
@@ -20,7 +20,7 @@ public class CartPageTest extends SauceLabsPortalTestBase {
         log.info("Verified the Cart Page Title Text {}", yourCartTitleText);
     }
 
-    @Test(description = "To verify, the cart page title.", groups = {TestGroups.SAUCE_LABS_REGRESSION})
+    @Test(description = "To verify, the cart page title.", groups = {WebTestGroups.SAUCE_LABS_REGRESSION})
     public void testCartProductCount() {
         boolean isCartClicked = SAUCELABS_PORTAL.get().HOME_PAGE.isShoppingCartLinkClicked();
         softAssert.assertTrue(isCartClicked, "Shopping Cart Link click failed!");
@@ -29,7 +29,7 @@ public class CartPageTest extends SauceLabsPortalTestBase {
         log.info("Verified the Cart Product Count {}.", cartProductCount);
     }
 
-    @Test(description = "To verify, the cart quantity label QTY.", groups = {TestGroups.SAUCE_LABS_REGRESSION})
+    @Test(description = "To verify, the cart quantity label QTY.", groups = {WebTestGroups.SAUCE_LABS_REGRESSION})
     public void testCartQuantityText() {
         boolean isCartClicked = SAUCELABS_PORTAL.get().HOME_PAGE.isShoppingCartLinkClicked();
         softAssert.assertTrue(isCartClicked, "Shopping Cart Link click failed!");
@@ -38,7 +38,7 @@ public class CartPageTest extends SauceLabsPortalTestBase {
         log.info("Verified the Cart Quantity Label {}.", cartQuantityText);
     }
 
-    @Test(description = "To verify, the cart quantity label Description.", groups = {TestGroups.SAUCE_LABS_REGRESSION})
+    @Test(description = "To verify, the cart quantity label Description.", groups = {WebTestGroups.SAUCE_LABS_REGRESSION})
     public void testCartDescriptionText() {
         boolean isCartClicked = SAUCELABS_PORTAL.get().HOME_PAGE.isShoppingCartLinkClicked();
         softAssert.assertTrue(isCartClicked, "Shopping Cart Link click failed!");
@@ -48,7 +48,7 @@ public class CartPageTest extends SauceLabsPortalTestBase {
     }
 
     @Test(description = "To verify, the cart entries.", dataProvider = "cart-products",
-            dataProviderClass = SauceLabsDataProvider.class, groups = {TestGroups.SAUCE_LABS_REGRESSION})
+            dataProviderClass = SauceLabsDataProvider.class, groups = {WebTestGroups.SAUCE_LABS_REGRESSION})
     public void testShoppingCartEntries(String productName, String productPrice, String productDescription) {
         boolean isCartClicked = SAUCELABS_PORTAL.get().HOME_PAGE.isShoppingCartLinkClicked();
         softAssert.assertTrue(isCartClicked, "Shopping Cart Link click failed!");

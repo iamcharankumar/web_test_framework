@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 
 @Slf4j
 @NoArgsConstructor
-public class WebDriverManager implements DriverManager<WebDriver> {
+public class WebDriverManager implements IDriverManager<WebDriver> {
 
     @Override
     public WebDriver getDriver() {
