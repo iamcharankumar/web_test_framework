@@ -70,35 +70,32 @@ public class HomePage extends SauceLabsBasePage {
     private WebElement addToCartSauceLabsRedTShirt;
 
     public String getHomePageHeaderText() {
-        return homePageHeader.getText();
+        return getWebElementText(homePageHeader);
     }
 
     public String getProductHeaderText() {
-        return productHeader.getText();
+        return getWebElementText(productHeader);
     }
 
     public boolean isShoppingCartLinkEnabled() {
-        return shoppingCartLink.isEnabled();
+        return isWebElementEnabled(shoppingCartLink);
     }
 
     public boolean isShoppingCartLinkClicked() {
-        if (isShoppingCartLinkEnabled()) {
-            shoppingCartLink.click();
-            return true;
-        }
-        return false;
+        clickWebElement(shoppingCartLink);
+        return true;
     }
 
     public String sortNameAtoZ() {
         Select sortAtoZ = new Select(productSortContainer);
         sortAtoZ.selectByVisibleText("Name (A to Z)");
-        return sauceLabsBackpackText.getText();
+        return getWebElementText(sauceLabsBackpackText);
     }
 
     public String sortNameZtoA() {
         Select sortZtoA = new Select(productSortContainer);
         sortZtoA.selectByVisibleText("Name (Z to A)");
-        return redTshirtText.getText();
+        return getWebElementText(redTshirtText);
     }
 
     public List<WebElement> getInventoryItemNames() {
@@ -110,39 +107,27 @@ public class HomePage extends SauceLabsBasePage {
     }
 
     public String getAllItemsText() {
-        homePageBurgerMenu.click();
+        clickWebElement(homePageBurgerMenu);
         waiter.waitForVisibilityOf(allItems);
-        if (allItems.isEnabled())
-            return allItems.getText();
-        else
-            return null;
+        return getWebElementText(allItems);
     }
 
     public String getAboutText() {
-        homePageBurgerMenu.click();
+        clickWebElement(homePageBurgerMenu);
         waiter.waitForVisibilityOf(about);
-        if (about.isEnabled())
-            return about.getText();
-        else
-            return null;
+        return getWebElementText(about);
     }
 
     public String getLogoutText() {
-        homePageBurgerMenu.click();
+        clickWebElement(homePageBurgerMenu);
         waiter.waitForVisibilityOf(logout);
-        if (logout.isEnabled())
-            return logout.getText();
-        else
-            return null;
+        return getWebElementText(logout);
     }
 
     public String getResetAppStateText() {
-        homePageBurgerMenu.click();
+        clickWebElement(homePageBurgerMenu);
         waiter.waitForVisibilityOf(resetAppState);
-        if (resetAppState.isEnabled())
-            return resetAppState.getText();
-        else
-            return null;
+        return getWebElementText(resetAppState);
     }
 
     public boolean isProductAddedToCart(String productName) {

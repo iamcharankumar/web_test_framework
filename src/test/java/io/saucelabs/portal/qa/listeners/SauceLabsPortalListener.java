@@ -21,7 +21,7 @@ public class SauceLabsPortalListener extends BaseTest implements ITestListener, 
 
     private Instant startDate;
     private int COUNT = 0;
-    private static final int MAX_RETRY = 3;
+    private static final int MAX_RETRY = 1;
 
     @Override
     public void onStart(ISuite suite) {

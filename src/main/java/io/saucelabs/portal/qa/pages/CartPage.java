@@ -33,19 +33,19 @@ public class CartPage extends SauceLabsBasePage {
     private List<WebElement> inventoryItemDescriptions;
 
     public String getYourCartTitle() {
-        return yourCartTitle.getText();
+        return getWebElementText(yourCartTitle);
     }
 
     public int getCartProductCount() {
-        return Integer.parseInt(cartProductCount.getText());
+        return Integer.parseInt(getWebElementText(cartProductCount));
     }
 
     public String getCartQuantityText() {
-        return cartQuantityLabel.getText();
+        return getWebElementText(cartQuantityLabel);
     }
 
     public String getCartDescriptionText() {
-        return cartDescriptionLabel.getText();
+        return getWebElementText(cartDescriptionLabel);
     }
 
     public List<WebElement> getInventoryItemNames() {
