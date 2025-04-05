@@ -27,7 +27,7 @@ public class ChromeBrowser implements IBrowser {
         try {
             return new RemoteWebDriver(new URL(remoteUrl), new ChromeOptions());
         } catch (MalformedURLException e) {
-            throw new WebUtilsException("Invalid remote URL: " + remoteUrl + ", " + e.getLocalizedMessage());
+            throw new WebUtilsException("Chrome: Invalid remote URL: %s, message: %s".formatted(remoteUrl, e.getLocalizedMessage()));
         }
     }
 }

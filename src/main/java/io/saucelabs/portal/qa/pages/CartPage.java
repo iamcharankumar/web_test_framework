@@ -1,5 +1,6 @@
 package io.saucelabs.portal.qa.pages;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -23,12 +24,15 @@ public class CartPage extends SauceLabsBasePage {
     @FindBy(className = "cart_desc_label")
     private WebElement cartDescriptionLabel;
 
+    @Getter
     @FindBy(className = "inventory_item_name")
     private List<WebElement> inventoryItemNames;
 
+    @Getter
     @FindBy(className = "inventory_item_price")
     private List<WebElement> inventoryItemPrices;
 
+    @Getter
     @FindBy(className = "inventory_item_desc")
     private List<WebElement> inventoryItemDescriptions;
 
@@ -46,17 +50,5 @@ public class CartPage extends SauceLabsBasePage {
 
     public String getCartDescriptionText() {
         return getWebElementText(cartDescriptionLabel);
-    }
-
-    public List<WebElement> getInventoryItemNames() {
-        return inventoryItemNames;
-    }
-
-    public List<WebElement> getInventoryItemPrices() {
-        return inventoryItemPrices;
-    }
-
-    public List<WebElement> getInventoryItemDescriptions() {
-        return inventoryItemDescriptions;
     }
 }

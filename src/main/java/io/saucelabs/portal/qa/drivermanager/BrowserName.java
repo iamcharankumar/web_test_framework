@@ -19,6 +19,6 @@ public enum BrowserName {
     public static BrowserName getBrowserName(String browserName) {
         return Arrays.stream(BrowserName.values())
                 .filter(browser -> browser.getBrowserType().equalsIgnoreCase(browserName))
-                .findFirst().orElseThrow(() -> new WebUtilsException("Browser not supported: " + browserName));
+                .findFirst().orElseThrow(() -> new WebUtilsException("Browser not supported: %s".formatted(browserName)));
     }
 }

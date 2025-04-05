@@ -30,10 +30,6 @@ public class LoginPage extends SauceLabsBasePage {
         return getWebElementText(loginLogo);
     }
 
-    public boolean isLoginEnabled() {
-        return isWebElementEnabled(loginButton);
-    }
-
     public boolean isLoginSuccess(String loginUserName, String loginPassword) {
         fillText(userName, loginUserName);
         fillText(password, loginPassword);

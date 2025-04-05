@@ -31,19 +31,19 @@ public abstract class WebBasePage {
 
     protected String getWebElementText(WebElement webElement) {
         if (!isWebElementDisplayed(webElement))
-            throw new WebUtilsException("WebElement: " + webElement + " is not displayed!");
+            throw new WebUtilsException("WebElement %s is not displayed!".formatted(webElement));
         return webElement.getText();
     }
 
     protected void clickWebElement(WebElement webElement) {
         if (!isWebElementDisplayedAndEnabled(webElement))
-            throw new WebUtilsException("WebElement: " + webElement + " is not displayed and enabled!");
+            throw new WebUtilsException("WebElement %s is not displayed and enabled!".formatted(webElement));
         webElement.click();
     }
 
     protected void fillText(WebElement webElement, String text) {
         if (!isWebElementDisplayedAndEnabled(webElement))
-            throw new WebUtilsException("WebElement: " + webElement + " is not displayed and enabled!");
+            throw new WebUtilsException("WebElement %s is not displayed and enabled!".formatted(webElement));
         webElement.clear();
         webElement.sendKeys(text);
     }

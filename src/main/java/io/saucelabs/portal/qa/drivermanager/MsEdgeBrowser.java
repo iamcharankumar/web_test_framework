@@ -27,7 +27,7 @@ public class MsEdgeBrowser implements IBrowser {
         try {
             return new RemoteWebDriver(new URL(remoteUrl), new EdgeOptions());
         } catch (MalformedURLException e) {
-            throw new WebUtilsException("Malformed URL: " + remoteUrl + " " + e.getLocalizedMessage());
+            throw new WebUtilsException("Edge: Invalid remote URL: %s, message: %s".formatted(remoteUrl, e.getLocalizedMessage()));
         }
     }
 }

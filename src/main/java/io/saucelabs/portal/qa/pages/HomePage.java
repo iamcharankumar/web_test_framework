@@ -1,11 +1,15 @@
 package io.saucelabs.portal.qa.pages;
 
+import io.saucelabs.portal.qa.exceptions.WebUtilsException;
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 public class HomePage extends SauceLabsBasePage {
 
@@ -45,9 +49,11 @@ public class HomePage extends SauceLabsBasePage {
     @FindBy(id = "item_3_title_link")
     private WebElement redTshirtText;
 
+    @Getter
     @FindBy(className = "inventory_item_name")
     private List<WebElement> inventoryItemNames;
 
+    @Getter
     @FindBy(className = "inventory_item_price")
     private List<WebElement> inventoryItemPrices;
 
@@ -98,14 +104,6 @@ public class HomePage extends SauceLabsBasePage {
         return getWebElementText(redTshirtText);
     }
 
-    public List<WebElement> getInventoryItemNames() {
-        return inventoryItemNames;
-    }
-
-    public List<WebElement> getInventoryItemPrices() {
-        return inventoryItemPrices;
-    }
-
     public String getAllItemsText() {
         clickWebElement(homePageBurgerMenu);
         waiter.waitForVisibilityOf(allItems);
@@ -130,35 +128,26 @@ public class HomePage extends SauceLabsBasePage {
         return getWebElementText(resetAppState);
     }
 
-    public boolean isProductAddedToCart(String productName) {
-        switch (productName) {
-            case "Sauce Labs Backpack":
-                if (addToCardSauceLabsBackpack.isEnabled() && getInventoryItemNames().stream().map(WebElement::getText).anyMatch(name -> name.equals(productName)))
-                    addToCardSauceLabsBackpack.click();
-                break;
-            case "Sauce Labs Bike Light":
-                if (addToCartSauceLabsBikeLight.isEnabled() && getInventoryItemNames().stream().map(WebElement::getText).anyMatch(name -> name.equals(productName)))
-                    addToCartSauceLabsBikeLight.click();
-                break;
-            case "Sauce Labs Bolt T-Shirt":
-                if (addToCardSauceLabsBoltTShirt.isEnabled() && getInventoryItemNames().stream().map(WebElement::getText).anyMatch(name -> name.equals(productName)))
-                    addToCardSauceLabsBoltTShirt.click();
-                break;
-            case "Sauce Labs Fleece Jacket":
-                if (addToCartSauceLabsFleeceJacket.isEnabled() && getInventoryItemNames().stream().map(WebElement::getText).anyMatch(name -> name.equals(productName)))
-                    addToCartSauceLabsFleeceJacket.click();
-                break;
-            case "Sauce Labs Onesie":
-                if (addToCartSauceLabsOneSize.isEnabled() && getInventoryItemNames().stream().map(WebElement::getText).anyMatch(name -> name.equals(productName)))
-                    addToCartSauceLabsOneSize.click();
-                break;
-            case "Test.allTheThings() T-Shirt (Red)":
-                if (addToCartSauceLabsRedTShirt.isEnabled() && getInventoryItemNames().stream().map(WebElement::getText).anyMatch(name -> name.equals(productName)))
-                    addToCartSauceLabsRedTShirt.click();
-                break;
-            default:
-                return false;
+    private void clickProductInCart(WebElement webElement, String productName) {
+        boolean isProductInCart = getInventoryItemNames().stream().map(WebElement::getText).anyMatch(name -> name.equals(productName));
+        if (!isProductInCart) {
+            throw new WebUtilsException("Product: %s is not in the cart!".formatted(productName));
         }
+        clickWebElement(webElement);
+    }
+
+    public boolean isProductAddedToCart(String productName) {
+        var productMap = Map.ofEntries(
+                Map.entry("Sauce Labs Backpack", addToCardSauceLabsBackpack),
+                Map.entry("Sauce Labs Bike Light", addToCartSauceLabsBikeLight),
+                Map.entry("Sauce Labs Bolt T-Shirt", addToCardSauceLabsBoltTShirt),
+                Map.entry("Sauce Labs Fleece Jacket", addToCartSauceLabsFleeceJacket),
+                Map.entry("Sauce Labs Onesie", addToCartSauceLabsOneSize),
+                Map.entry("Test.allTheThings() T-Shirt (Red)", addToCartSauceLabsRedTShirt)
+        );
+        WebElement productElement = Optional.ofNullable(productMap.get(productName))
+                .orElseThrow(() -> new WebUtilsException("Product: %s is not available!".formatted(productName)));
+        clickProductInCart(productElement, productName);
         return true;
     }
 }
