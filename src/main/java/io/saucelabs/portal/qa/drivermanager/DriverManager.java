@@ -1,11 +1,8 @@
 package io.saucelabs.portal.qa.drivermanager;
 
-import org.openqa.selenium.MutableCapabilities;
-
 public interface DriverManager<T> {
-	T getDriver();
 
-	T getDriver(MutableCapabilities capabilities);
+    T getDriver();
 
-	void destroyDriver(T t);
+    void destroyDriver(T t);
 }

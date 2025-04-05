@@ -1,6 +1,7 @@
 package io.saucelabs.portal.qa.testcases;
 
 import io.saucelabs.portal.qa.commons.BaseTest;
+import io.saucelabs.portal.qa.commons.web.SauceLabsPortalConstants;
 import io.saucelabs.portal.qa.module.SauceLabsPortal;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.AfterMethod;
@@ -20,7 +21,8 @@ public class SauceLabsPortalTestBase extends BaseTest {
         SAUCELABS_PORTAL.get().visit();
         driver.get().navigate().refresh();
         driver.get().manage().window().maximize();
-        SAUCELABS_PORTAL.get().LOGIN_PAGE.isLoginSuccess(SAUCELABS_PORTAL.get().getSAUCELABS_USERNAME(), SAUCELABS_PORTAL.get().getSAUCELABS_PASSWORD());
+        SAUCELABS_PORTAL.get().LOGIN_PAGE.isLoginSuccess(SauceLabsPortalConstants.CONFIG_LOADER.getSauceLabsPortalUserName(),
+                SauceLabsPortalConstants.CONFIG_LOADER.getSauceLabsPortalPassword());
     }
 
     @AfterMethod(alwaysRun = true)
