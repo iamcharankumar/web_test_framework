@@ -1,4 +1,4 @@
-package io.saucelabs.portal.qa.drivermanager;
+package io.saucelabs.portal.qa.browsermanager;
 
 import org.openqa.selenium.WebDriver;
 

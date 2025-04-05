@@ -1,33 +1,33 @@
-package io.saucelabs.portal.qa.drivermanager;
+package io.saucelabs.portal.qa.browsermanager;
 
 import io.saucelabs.portal.qa.commons.web.SauceLabsPortalConstants;
 import io.saucelabs.portal.qa.exceptions.WebUtilsException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class FirefoxBrowser implements IBrowser {
+public class ChromeBrowser implements IBrowser {
 
     @Override
     public WebDriver createLocalBrowserSession() {
-        return new FirefoxDriver();
+        return new ChromeDriver();
     }
 
     @Override
     public WebDriver createHeadlessBrowserSession() {
-        return new FirefoxDriver(new FirefoxOptions().addArguments(SauceLabsPortalConstants.HEADLESS_ARGUMENT));
+        return new ChromeDriver(new ChromeOptions().addArguments(SauceLabsPortalConstants.HEADLESS_ARGUMENT));
     }
 
     @Override
     public WebDriver createRemoteBrowserSession(String remoteUrl) {
         try {
-            return new RemoteWebDriver(new URL(remoteUrl), new FirefoxOptions());
+            return new RemoteWebDriver(new URL(remoteUrl), new ChromeOptions());
         } catch (MalformedURLException e) {
-            throw new WebUtilsException("Firefox: Invalid remote URL: %s, message: %s".formatted(remoteUrl, e.getLocalizedMessage()));
+            throw new WebUtilsException("Chrome: Invalid remote URL: %s, message: %s".formatted(remoteUrl, e.getLocalizedMessage()));
         }
     }
 }

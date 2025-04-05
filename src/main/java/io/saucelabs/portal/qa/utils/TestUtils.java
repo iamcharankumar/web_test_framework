@@ -2,7 +2,7 @@ package io.saucelabs.portal.qa.utils;
 
 import com.epam.reportportal.listeners.ListenerParameters;
 import com.epam.reportportal.service.Launch;
-import io.saucelabs.portal.qa.exceptions.TestUtilsException;
+import io.saucelabs.portal.qa.exceptions.WebUtilsException;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,7 +25,7 @@ public class TestUtils {
             } else
                 return result.getName();
         } else
-            throw new TestUtilsException("Test Method and Test Data Concatenation Failed!");
+            throw new WebUtilsException("Test Method and Test Data Concatenation Failed!");
     }
 
     public static int calculateTestCasePercentage(int numberOfTestCases, int totalTestCases) {
@@ -33,7 +33,7 @@ public class TestUtils {
             double testCasePercentage = ((double) numberOfTestCases / totalTestCases) * 100;
             return (int) testCasePercentage;
         } else
-            throw new TestUtilsException("Cannot be divided by Zero! Total Test Cases cannot be Zero.");
+            throw new WebUtilsException("Cannot be divided by Zero! Total Test Cases cannot be Zero.");
     }
 
     public static String getReportPortalLaunchUrl() {

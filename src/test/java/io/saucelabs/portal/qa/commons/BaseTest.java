@@ -1,7 +1,7 @@
 package io.saucelabs.portal.qa.commons;
 
-import io.saucelabs.portal.qa.drivermanager.DriverManager;
-import io.saucelabs.portal.qa.drivermanager.WebDriverManager;
+import io.saucelabs.portal.qa.browsermanager.DriverManager;
+import io.saucelabs.portal.qa.browsermanager.WebDriverManager;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;

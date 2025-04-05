@@ -1,6 +1,6 @@
 package io.saucelabs.portal.qa.commons.web;
 
-import io.saucelabs.portal.qa.utils.ConfigLoader;
+import io.saucelabs.portal.qa.utils.WebConfigLoader;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -18,13 +18,9 @@ public final class SauceLabsPortalConstants {
     public static final String FAIL_PREFIX = "FAILED_";
     public static final String IMAGE_FORMAT = ".png";
 
-    public static final ConfigLoader CONFIG_LOADER = ConfigLoader.getInstance();
-    public static final String RUN_MODE = "runmode";
-    public static final String BROWSER = "browser";
-    public static final String REMOTE = "remote";
-    public static final String HEADLESS = "headless";
+    public static final WebConfigLoader CONFIG_LOADER = WebConfigLoader.getInstance();
     public static final String HEADLESS_ARGUMENT = "--headless";
 
     // DISCORD API
-    public static final String DISCORD_WEBHOOK = ConfigLoader.getInstance().getDiscordUrl() + "/api/webhooks";
+    public static final String DISCORD_WEBHOOK = CONFIG_LOADER.getDiscordUrl() + "/api/webhooks";
 }

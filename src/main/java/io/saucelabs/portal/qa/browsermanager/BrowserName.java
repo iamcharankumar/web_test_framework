@@ -1,4 +1,4 @@
-package io.saucelabs.portal.qa.drivermanager;
+package io.saucelabs.portal.qa.browsermanager;
 
 import io.saucelabs.portal.qa.exceptions.WebUtilsException;
 import lombok.AllArgsConstructor;

@@ -5,7 +5,6 @@ import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 import java.util.Map;
@@ -93,14 +92,12 @@ public class HomePage extends SauceLabsBasePage {
     }
 
     public String sortNameAtoZ() {
-        Select sortAtoZ = new Select(productSortContainer);
-        sortAtoZ.selectByVisibleText("Name (A to Z)");
+        selectWebElementByVisibleText(productSortContainer, "Name (A to Z)");
         return getWebElementText(sauceLabsBackpackText);
     }
 
     public String sortNameZtoA() {
-        Select sortZtoA = new Select(productSortContainer);
-        sortZtoA.selectByVisibleText("Name (Z to A)");
+        selectWebElementByVisibleText(productSortContainer, "Name (Z to A)");
         return getWebElementText(redTshirtText);
     }
 

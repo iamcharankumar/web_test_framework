@@ -1,4 +1,4 @@
-package io.saucelabs.portal.qa.drivermanager;
+package io.saucelabs.portal.qa.browsermanager;
 
 import io.saucelabs.portal.qa.commons.web.SauceLabsPortalConstants;
 import lombok.NoArgsConstructor;
@@ -11,13 +11,12 @@ public class WebDriverManager implements DriverManager<WebDriver> {
 
     @Override
     public WebDriver getDriver() {
-        String browserName = System.getProperty(SauceLabsPortalConstants.BROWSER);
         BrowserFactory browserFactory = new BrowserFactory();
-        return switch (System.getProperty(SauceLabsPortalConstants.RUN_MODE)) {
-            case SauceLabsPortalConstants.REMOTE -> browserFactory.createBrowser(browserName)
+        String browserName = System.getProperty("browser");
+        return switch (System.getProperty("runmode")) {
+            case "remote" -> browserFactory.createBrowser(browserName)
                     .createRemoteBrowserSession(SauceLabsPortalConstants.CONFIG_LOADER.getServerUrl());
-            case SauceLabsPortalConstants.HEADLESS ->
-                    browserFactory.createBrowser(browserName).createHeadlessBrowserSession();
+            case "headless" -> browserFactory.createBrowser(browserName).createHeadlessBrowserSession();
             default -> browserFactory.createBrowser(browserName).createLocalBrowserSession();
         };
     }
