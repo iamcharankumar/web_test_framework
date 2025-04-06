@@ -1,7 +1,5 @@
 package io.saucelabs.portal.qa.utils;
 
-import io.saucelabs.portal.qa.commons.web.SauceLabsPortalConstants;
-
 import java.util.Objects;
 import java.util.Properties;
 
@@ -11,7 +9,8 @@ public class WebConfigLoader {
     private static WebConfigLoader instance;
 
     private WebConfigLoader() {
-        PROPERTIES = PropertiesHelper.loadProperties(SauceLabsPortalConstants.SAUCELABS_PORTAL_PROPERTIES_FILE);
+        PROPERTIES = PropertiesHelper.loadProperties(System.getProperty("user.dir")
+                + "/src/main/java/resources/config.properties");
     }
 
     public static WebConfigLoader getInstance() {

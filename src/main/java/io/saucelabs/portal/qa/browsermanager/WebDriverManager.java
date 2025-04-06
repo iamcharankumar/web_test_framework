@@ -12,8 +12,8 @@ public class WebDriverManager implements IDriverManager<WebDriver> {
     @Override
     public WebDriver getDriver() {
         BrowserFactory browserFactory = new BrowserFactory();
-        String browserName = System.getProperty("browser");
-        return switch (System.getProperty("runmode")) {
+        String browserName = SauceLabsPortalConstants.BROWSER_NAME;
+        return switch (SauceLabsPortalConstants.RUN_MODE) {
             case "remote" -> browserFactory.createBrowser(browserName)
                     .createRemoteBrowserSession(SauceLabsPortalConstants.CONFIG_LOADER.getServerUrl());
             case "headless" -> browserFactory.createBrowser(browserName).createHeadlessBrowserSession();

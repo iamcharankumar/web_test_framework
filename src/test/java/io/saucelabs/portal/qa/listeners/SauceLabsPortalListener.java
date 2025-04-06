@@ -13,7 +13,6 @@ import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 import java.time.Instant;
-import java.util.Date;
 
 @Slf4j
 public class SauceLabsPortalListener extends WebBaseTest implements ITestListener, ISuiteListener, IRetryAnalyzer {
@@ -54,31 +53,18 @@ public class SauceLabsPortalListener extends WebBaseTest implements ITestListene
     }
 
     private void takeScreenshot(ITestResult testResult) {
-        TakesScreenshot takesScreenshot = (TakesScreenshot) driver.get();
-        File sourceFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
-        File destinationFile;
         try {
-            if (testResult.isSuccess()) {
-                destinationFile = new File(SauceLabsPortalConstants.DIRECTORY +
-                        SauceLabsPortalConstants.PASS + File.separator
-                        + SauceLabsPortalConstants.PASS_PREFIX
-                        + testResult.getName() + "_" + new Date()
-                        + SauceLabsPortalConstants.IMAGE_FORMAT);
-                FileUtils.copyFile(sourceFile, destinationFile);
-                log.info("Success scenario has been captured. PASSED Screenshot has been placed in the location {}",
-                        destinationFile);
-            } else {
-                destinationFile = new File(SauceLabsPortalConstants.DIRECTORY
-                        + SauceLabsPortalConstants.FAIL + File.separator
-                        + SauceLabsPortalConstants.FAIL_PREFIX
-                        + testResult.getName() + "_" + new Date()
-                        + SauceLabsPortalConstants.IMAGE_FORMAT);
-                FileUtils.copyFile(sourceFile, destinationFile);
-                log.info("Failed scenario has been captured. FAILED Screenshot has been placed in the location {}",
-                        destinationFile);
-            }
+            File sourceFile = ((TakesScreenshot) driver.get()).getScreenshotAs(OutputType.FILE);
+            String testName = testResult.getName();
+            String statusPrefix = testResult.isSuccess() ? "PASS_" : "FAIL_";
+            String directory = testResult.isSuccess() ? "/passed_screenshots/" : "/failed_screenshots/";
+            String testData = (testResult.getParameters().length > 0) ? String.valueOf(testResult.getParameters()[0]) : "No_Params";
+            String filePath = String.format("%s%s%s_%s_%s%s_%s_%s%s", "./src/test/resources/screenshots",
+                    directory, SauceLabsPortalConstants.BROWSER_NAME, SauceLabsPortalConstants.RUN_MODE,
+                    statusPrefix, testName, testData, Instant.now().toString().replace(":", "_"), ".png");
+            FileUtils.copyFile(sourceFile, new File(filePath));
         } catch (IOException e) {
-            log.error("Unable to capture the screenshots for Sauce Labs Portal {}", e.getMessage());
+            log.error("Failed to capture screenshot for test: {}", testResult.getName(), e);
         }
     }
 
