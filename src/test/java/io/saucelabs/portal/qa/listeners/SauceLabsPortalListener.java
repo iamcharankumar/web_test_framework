@@ -2,7 +2,6 @@ package io.saucelabs.portal.qa.listeners;
 
 import io.saucelabs.portal.qa.commons.WebBaseTest;
 import io.saucelabs.portal.qa.commons.web.SauceLabsPortalConstants;
-import io.saucelabs.portal.qa.utils.DiscordUtils;
 import io.saucelabs.portal.qa.utils.TestUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.OutputType;
@@ -34,12 +33,6 @@ public class SauceLabsPortalListener extends WebBaseTest implements ITestListene
         Instant endDate = Instant.now();
         Duration timeElapsed = Duration.between(startDate, endDate);
         log.info("Sauce Labs Test Suite finished executing in {} seconds.", timeElapsed.getSeconds());
-        int passedTestCases = context.getPassedTests().size();
-        int failedTestCases = context.getFailedTests().size();
-        int skippedTestCases = context.getSkippedTests().size();
-        int totalTestCases = passedTestCases + failedTestCases + skippedTestCases;
-        String discordMessage = DiscordUtils.buildDiscordMessage(passedTestCases, failedTestCases, skippedTestCases, totalTestCases);
-        DiscordUtils.sendMessageToChannel(discordMessage);
     }
 
     @Override

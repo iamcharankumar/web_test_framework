@@ -41,10 +41,6 @@ public class WebConfigLoader {
         return getProperty("server");
     }
 
-    public String getDiscordUrl() {
-        return getProperty("discord.url");
-    }
-
     private String getProperty(String propertyName) {
         String propertyValue = PROPERTIES.getProperty(propertyName);
         Objects.requireNonNull(propertyValue, "Property not found: " + propertyName);

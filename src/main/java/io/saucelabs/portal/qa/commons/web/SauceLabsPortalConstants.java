@@ -19,7 +19,4 @@ public final class SauceLabsPortalConstants {
 
     public static final WebConfigLoader CONFIG_LOADER = WebConfigLoader.getInstance();
     public static final String HEADLESS_ARGUMENT = "--headless";
-
-    // DISCORD API
-    public static final String DISCORD_WEBHOOK = CONFIG_LOADER.getDiscordUrl() + "/api/webhooks";
 }
