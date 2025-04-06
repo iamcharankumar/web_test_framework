@@ -9,7 +9,7 @@ public class WebConfigLoader {
     private static WebConfigLoader instance;
 
     private WebConfigLoader() {
-        PROPERTIES = PropertiesHelper.loadProperties(System.getProperty("user.dir")
+        PROPERTIES = PropertyUtils.loadProperties(System.getProperty("user.dir")
                 + "/src/main/java/resources/config.properties");
     }
 

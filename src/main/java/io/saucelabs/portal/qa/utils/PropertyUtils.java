@@ -1,5 +1,7 @@
 package io.saucelabs.portal.qa.utils;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.FileInputStream;
@@ -8,7 +10,8 @@ import java.io.InputStream;
 import java.util.Properties;
 
 @Slf4j
-public class PropertiesHelper {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public class PropertyUtils {
 
     public static Properties loadProperties(String fileName) {
         Properties properties;
