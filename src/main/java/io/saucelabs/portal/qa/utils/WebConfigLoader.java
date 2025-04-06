@@ -25,7 +25,7 @@ public class WebConfigLoader {
     }
 
     public String getSauceLabsPortalUrl() {
-        return getProperty("saucelabs.url");
+        return getProperty("sauce.labs.url");
     }
 
     public String getSauceLabsPortalUserName() {
