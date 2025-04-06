@@ -19,8 +19,7 @@ import java.util.Date;
 public class SauceLabsPortalListener implements ITestListener, ISuiteListener, IRetryAnalyzer {
 
     private Instant startDate;
-    private int COUNT = 0;
-    private static final int MAX_RETRY = 1;
+    private int retryCount = 0;
 
     private static final ThreadLocal<WebDriver> WEB_DRIVER = new ThreadLocal<>();
 
@@ -81,15 +80,14 @@ public class SauceLabsPortalListener implements ITestListener, ISuiteListener, I
 
     @Override
     public boolean retry(ITestResult result) {
-        if (!result.isSuccess()) {
-            if (COUNT < MAX_RETRY) {
-                log.info("Retrying test for {} time(s) for the test method {} with test status {}.",
-                        COUNT + 1, result.getName(), getTestStatusName(result.getStatus()));
-                COUNT++;
-                return true;
-            }
+        int maxRetry = 1;
+        if (!result.isSuccess() && retryCount < maxRetry) {
+            log.error("Retrying test for {} time(s) for the test method {} with test status {}.",
+                    retryCount + 1, result.getName(), getTestStatusName(result.getStatus()));
+            retryCount++;
+            return true;
         }
-        log.info("Retrying for the test method {} is exhausted.", result.getName());
+        log.error("Retrying for the test method {} is exhausted.", result.getName());
         return false;
     }
 

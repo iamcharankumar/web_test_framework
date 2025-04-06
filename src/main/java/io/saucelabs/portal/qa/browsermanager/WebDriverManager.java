@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 
+import java.util.Objects;
+
 @Slf4j
 @NoArgsConstructor
 public class WebDriverManager implements IDriverManager<WebDriver> {
@@ -23,10 +25,7 @@ public class WebDriverManager implements IDriverManager<WebDriver> {
 
     @Override
     public void destroyDriver(WebDriver driver) {
-        if (driver != null) {
-            driver.quit();
-        } else {
-            log.error("Browser is not yet initialized");
-        }
+        Objects.requireNonNull(driver, "Browser is not yet initialized!");
+        driver.quit();
     }
 }

@@ -25,8 +25,6 @@ public class WebBrowserWaiter implements IWait<WebElement> {
     @Override
     public WebElement waitForPresenceOfElementLocated(By locator) {
         return WAIT.until(ExpectedConditions.presenceOfElementLocated(locator));
-
-
     }
 
     @Override
