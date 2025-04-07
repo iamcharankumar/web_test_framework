@@ -7,6 +7,7 @@ import io.saucelabs.portal.qa.pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 
 public class SauceLabsPortal {
+
     private final WebDriver SAUCE_LABS_WEBDRIVER;
     public final LoginPage LOGIN_PAGE;
     public final HomePage HOME_PAGE;
