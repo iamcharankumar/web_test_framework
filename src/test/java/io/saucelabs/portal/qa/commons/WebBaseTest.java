@@ -2,7 +2,7 @@ package io.saucelabs.portal.qa.commons;
 
 import io.saucelabs.portal.qa.browsermanager.IDriverManager;
 import io.saucelabs.portal.qa.browsermanager.WebDriverManager;
-import io.saucelabs.portal.qa.listeners.SauceLabsPortalListener;
+import io.saucelabs.portal.qa.listeners.WebTestListeners;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
@@ -25,7 +25,7 @@ public abstract class WebBaseTest {
     public void init() {
         driver.set(driverManager.getDriver());
         log.info("WebDriver has been set.");
-        SauceLabsPortalListener.setWebDriver(driver.get());
+        WebTestListeners.setWebDriver(driver.get());
     }
 
     @AfterMethod(alwaysRun = true)

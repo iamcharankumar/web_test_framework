@@ -1,6 +1,7 @@
-package io.saucelabs.portal.qa.commons.web;
+package io.saucelabs.portal.qa.commons;
 
 import io.saucelabs.portal.qa.exceptions.WebUtilsException;
+import io.saucelabs.portal.qa.locators.LocateElements;
 import io.saucelabs.portal.qa.waits.WebBrowserWaiter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,12 +14,14 @@ public abstract class WebBasePage {
     protected WebDriver driver;
     protected WebBrowserWaiter waiter;
     protected WebBrowserWaiter longWaiter;
+    protected LocateElements locateElements;
     private static final String WEB_ELEMENT_ERROR_MESSAGE = "WebElement cannot be null";
 
     protected WebBasePage(WebDriver driver) {
         this.driver = driver;
-        this.waiter = new WebBrowserWaiter(this.driver);
-        this.longWaiter = new WebBrowserWaiter(this.driver);
+        this.waiter = new WebBrowserWaiter(driver);
+        this.longWaiter = new WebBrowserWaiter(driver);
+        this.locateElements = new LocateElements(driver);
     }
 
     protected boolean isWebElementDisplayed(WebElement webElement) {

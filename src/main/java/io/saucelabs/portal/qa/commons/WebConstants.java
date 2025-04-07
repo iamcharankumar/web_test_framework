@@ -1,11 +1,11 @@
-package io.saucelabs.portal.qa.commons.web;
+package io.saucelabs.portal.qa.commons;
 
 import io.saucelabs.portal.qa.utils.WebConfigLoader;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public final class SauceLabsPortalConstants {
+public final class WebConstants {
 
     public static final WebConfigLoader CONFIG_LOADER = WebConfigLoader.getInstance();
     public static final String HEADLESS_ARGUMENT = "--headless";

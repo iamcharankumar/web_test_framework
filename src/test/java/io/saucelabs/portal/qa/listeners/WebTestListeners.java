@@ -1,6 +1,6 @@
 package io.saucelabs.portal.qa.listeners;
 
-import io.saucelabs.portal.qa.commons.web.SauceLabsPortalConstants;
+import io.saucelabs.portal.qa.commons.WebConstants;
 import io.saucelabs.portal.qa.exceptions.WebUtilsException;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.OutputType;
@@ -16,7 +16,7 @@ import java.time.Instant;
 import java.util.Date;
 
 @Slf4j
-public class SauceLabsPortalListener implements ITestListener, ISuiteListener, IRetryAnalyzer {
+public class WebTestListeners implements ITestListener, ISuiteListener, IRetryAnalyzer {
 
     private Instant startDate;
     private int retryCount = 0;
@@ -31,6 +31,7 @@ public class SauceLabsPortalListener implements ITestListener, ISuiteListener, I
     public void onStart(ISuite suite) {
         startDate = Instant.now();
         log.info("Web Test Suite {} started executing at {}.", suite.getName(), startDate);
+        log.info("Browser: {} | Run Mode: {}", WebConstants.BROWSER_NAME, WebConstants.RUN_MODE);
     }
 
     @Override
@@ -74,7 +75,7 @@ public class SauceLabsPortalListener implements ITestListener, ISuiteListener, I
         String directory = testResult.isSuccess() ? "/passed_screenshots/" : "/failed_screenshots/";
         String testData = (testResult.getParameters().length > 0) ? String.valueOf(testResult.getParameters()[0]) : "No_Params";
         return String.format("%s%s%s_%s_%s%s_%s_%s%s", "./src/test/resources/screenshots",
-                directory, SauceLabsPortalConstants.BROWSER_NAME, SauceLabsPortalConstants.RUN_MODE,
+                directory, WebConstants.BROWSER_NAME, WebConstants.RUN_MODE,
                 statusPrefix, testName, testData, new Date(), ".png").replaceAll(":", "\\:");
     }
 

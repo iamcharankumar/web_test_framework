@@ -1,6 +1,6 @@
 package io.saucelabs.portal.qa.browsermanager;
 
-import io.saucelabs.portal.qa.commons.web.SauceLabsPortalConstants;
+import io.saucelabs.portal.qa.commons.WebConstants;
 import io.saucelabs.portal.qa.exceptions.WebUtilsException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -19,7 +19,7 @@ public class FirefoxBrowser implements IBrowser {
 
     @Override
     public WebDriver createHeadlessBrowserSession() {
-        return new FirefoxDriver(new FirefoxOptions().addArguments(SauceLabsPortalConstants.HEADLESS_ARGUMENT));
+        return new FirefoxDriver(new FirefoxOptions().addArguments(WebConstants.HEADLESS_ARGUMENT));
     }
 
     @Override

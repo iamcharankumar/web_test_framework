@@ -1,7 +1,7 @@
 package io.saucelabs.portal.qa.testcases;
 
 import io.saucelabs.portal.qa.commons.WebBaseTest;
-import io.saucelabs.portal.qa.commons.web.SauceLabsPortalConstants;
+import io.saucelabs.portal.qa.commons.WebConstants;
 import io.saucelabs.portal.qa.module.SauceLabsPortal;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.AfterMethod;
@@ -21,8 +21,8 @@ public class SauceLabsPortalTestBase extends WebBaseTest {
         SAUCE_LABS_PORTAL.get().visit();
         driver.get().navigate().refresh();
         driver.get().manage().window().maximize();
-        SAUCE_LABS_PORTAL.get().LOGIN_PAGE.isLoginSuccess(SauceLabsPortalConstants.CONFIG_LOADER.getSauceLabsPortalUserName(),
-                SauceLabsPortalConstants.CONFIG_LOADER.getSauceLabsPortalPassword());
+        SAUCE_LABS_PORTAL.get().LOGIN_PAGE.isLoginSuccess(WebConstants.CONFIG_LOADER.getSauceLabsPortalUserName(),
+                WebConstants.CONFIG_LOADER.getSauceLabsPortalPassword());
     }
 
     @AfterMethod(alwaysRun = true)

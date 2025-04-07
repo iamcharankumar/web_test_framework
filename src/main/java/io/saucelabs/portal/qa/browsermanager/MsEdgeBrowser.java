@@ -1,6 +1,6 @@
 package io.saucelabs.portal.qa.browsermanager;
 
-import io.saucelabs.portal.qa.commons.web.SauceLabsPortalConstants;
+import io.saucelabs.portal.qa.commons.WebConstants;
 import io.saucelabs.portal.qa.exceptions.WebUtilsException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -19,7 +19,7 @@ public class MsEdgeBrowser implements IBrowser {
 
     @Override
     public WebDriver createHeadlessBrowserSession() {
-        return new EdgeDriver(new EdgeOptions().addArguments(SauceLabsPortalConstants.HEADLESS_ARGUMENT));
+        return new EdgeDriver(new EdgeOptions().addArguments(WebConstants.HEADLESS_ARGUMENT));
     }
 
     @Override

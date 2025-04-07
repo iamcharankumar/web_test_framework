@@ -44,6 +44,12 @@
             <version>2.0.6</version>
         </dependency>
         <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.0.17</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.zeroturnaround</groupId>
             <artifactId>zt-zip</artifactId>
             <version>1.16</version>
@@ -66,7 +72,7 @@
                         <property>
                             <name>listener</name>
                             <value>
-                                io.saucelabs.portal.qa.listeners.SauceLabsPortalListener,
+                                io.saucelabs.portal.qa.listeners.WebTestListeners,
                                 io.saucelabs.portal.qa.listeners.AnnotationTransformer
                             </value>
                         </property>
