@@ -2,61 +2,40 @@ package io.saucelabs.portal.qa.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
 public class CartPage extends SauceLabsBasePage {
+
     public CartPage(WebDriver driver) {
         super(driver);
     }
 
-    @FindBy(className = "title")
-    private WebElement yourCartTitle;
-
-    @FindBy(className = "shopping_cart_badge")
-    private WebElement cartProductCount;
-
-    @FindBy(className = "cart_quantity_label")
-    private WebElement cartQuantityLabel;
-
-    @FindBy(className = "cart_desc_label")
-    private WebElement cartDescriptionLabel;
-
-    @FindBy(className = "inventory_item_name")
-    private List<WebElement> inventoryItemNames;
-
-    @FindBy(className = "inventory_item_price")
-    private List<WebElement> inventoryItemPrices;
-
-    @FindBy(className = "inventory_item_desc")
-    private List<WebElement> inventoryItemDescriptions;
-
     public String getYourCartTitle() {
-        return yourCartTitle.getText();
+        return getWebElementText(locateElements.getByClassName("title"));
     }
 
     public int getCartProductCount() {
-        return Integer.parseInt(cartProductCount.getText());
+        return Integer.parseInt(getWebElementText(locateElements.getByClassName("shopping_cart_badge")));
     }
 
     public String getCartQuantityText() {
-        return cartQuantityLabel.getText();
+        return getWebElementText(locateElements.getByClassName("cart_quantity_label"));
     }
 
     public String getCartDescriptionText() {
-        return cartDescriptionLabel.getText();
+        return getWebElementText(locateElements.getByClassName("cart_desc_label"));
     }
 
     public List<WebElement> getInventoryItemNames() {
-        return inventoryItemNames;
+        return locateElements.getByClassNameList("inventory_item_name");
     }
 
     public List<WebElement> getInventoryItemPrices() {
-        return inventoryItemPrices;
+        return locateElements.getByClassNameList("inventory_item_price");
     }
 
     public List<WebElement> getInventoryItemDescriptions() {
-        return inventoryItemDescriptions;
+        return locateElements.getByClassNameList("inventory_item_desc");
     }
 }
