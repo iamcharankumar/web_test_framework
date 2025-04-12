@@ -93,13 +93,43 @@ The screenshot listeners are configured in "pom.xml" under "< property >" tag.
 More on the Docker images for Selenium (ARM/NON-ARM)
 read this GitHub's [README](https://github.com/seleniumhq-community/docker-seleniarm).
 
+# 🧪 ARM-Ready Selenium Grid with Docker Compose
+
+> ⚠️ Tired of Selenium Docker setups breaking on your M1/M2 Mac? Here's a fully functional ARM-based Selenium Grid using [`seleniarm`](https://github.com/SeleniumHQ/docker-selenium#arm-support).
+
+---
+
+## 💡 Why This Exists
+
+Most Selenium Docker images are built for **x86_64** architecture — which fails to run on modern **ARM64** systems like:
+
+- Apple Silicon Macs (M1/M2)
+- Raspberry Pi
+- ARM-based CI runners
+
+This project uses the [`seleniarm`](https://github.com/SeleniumHQ/docker-selenium#arm-support) images to build a **cross-platform, lightweight, plug-and-play** Selenium Grid. 🌍
+
+---
+
+## ⚙️ Tech Stack
+
+- Selenium Grid Hub (ARM compatible)
+- Chrome & Firefox Nodes (ARM)
+- Docker Compose
+- VNC Enabled for visual debugging
+- Parallel test sessions
+
+---
+
+## 🧱 Folder Structure
+
+Goto `/web_test_framework/src/main/java/resources` and execute the below docker commands to setup the `Seleniarm Gird`.
+
 `docker ps -a`
 
 ###### Run the below command to delete all the docker containers (if only required)
 
 `docker rm -vf $(docker ps -aq)`
-
-###### Run the below command from the docker compose file (docker-compose-v3.yml) directory
 
 ###### To spin up 10 nodes in the grid we use --scale before the node's name.
 
@@ -109,7 +139,7 @@ read this GitHub's [README](https://github.com/seleniumhq-community/docker-selen
 
 `curl -X DELETE http://localhost:4444/wd/hub/session/{session_id}`
 
-#### SELENIUM GRID OUTPUT
+#### SELENIUM GRID OUTPUTS
 
 <img width="1728" alt="7_Threads_Chrome_Remote" src="https://github.com/user-attachments/assets/52070b74-fed6-4880-a668-1a3743e3946c" />
 <img width="1728" alt="Max_9_Threads_Firefox_Remote" src="https://github.com/user-attachments/assets/cc6ab5a8-3aa1-489d-972a-9f6c915da7a8" />
