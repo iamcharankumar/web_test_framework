@@ -1,3 +1,7 @@
+![Selenium](https://img.shields.io/badge/-selenium-%43B02A?style=for-the-badge&logo=selenium&logoColor=white)
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+![Maven](https://img.shields.io/badge/apachemaven-C71A36.svg?style=for-the-badge&logo=apachemaven&logoColor=white)
+
 # ABOUT
 
 A Web Test Framework for developing regression suites. The test cases can be run locally and in remote server.
@@ -106,7 +110,9 @@ read this GitHub's [README](https://github.com/seleniumhq-community/docker-selen
 
 #### SELENIUM GRID OUTPUT
 
-<img width="1728" alt="Selenium_Grid_Output" src="https://github.com/iamcharankumar/web_test_framework/assets/29479534/c94df587-e4b5-4199-ab94-c9bbf327ae58">
+<img width="1728" alt="7_Threads_Chrome_Remote" src="https://github.com/user-attachments/assets/52070b74-fed6-4880-a668-1a3743e3946c" />
+<img width="1728" alt="Max_9_Threads_Firefox_Remote" src="https://github.com/user-attachments/assets/cc6ab5a8-3aa1-489d-972a-9f6c915da7a8" />
+
 
 ## Star History
 
