@@ -159,6 +159,8 @@ Goto `/web_test_framework/src/main/java/resources` and execute the below docker 
   brilliant [work](https://github.com/fabriciorby/maven-surefire-junit5-tree-reporter?tab=readme-ov-file)!
   ❤️
 
+<img width="1726" alt="Web_Selenium_Logs" src="https://github.com/user-attachments/assets/f67b40af-469b-4237-8956-7a64bb6713f0" />
+
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=iamcharankumar/web_test_framework&type=Date)](https://star-history.com/#iamcharankumar/web_test_framework&Date)
