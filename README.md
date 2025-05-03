@@ -144,6 +144,20 @@ Goto `/web_test_framework/src/main/java/resources` and execute the below docker 
 <img width="1728" alt="7_Threads_Chrome_Remote" src="https://github.com/user-attachments/assets/52070b74-fed6-4880-a668-1a3743e3946c" />
 <img width="1728" alt="Max_9_Threads_Firefox_Remote" src="https://github.com/user-attachments/assets/cc6ab5a8-3aa1-489d-972a-9f6c915da7a8" />
 
+#### DECLUTTERING MAVEN OUTPUT
+
+- Maven usually floods the console with logs during test execution, making it hard to spot what's important.
+  A clean, minimal, Node.js-style output for a Java project felt impossible—until I
+  found this [maven dependency](https://mvnrepository.com/artifact/me.fabriciorby/maven-surefire-junit5-tree-reporter).
+- Its purpose is simple: **"What happened to my test cases?"** That’s exactly what it shows—straight to the point, no
+  clutter.
+- By following this [post](https://medium.com/wearewaes/my-journey-to-a-clear-test-output-in-maven-df82fe272249)
+  by [Fabricio](https://github.com/fabriciorby),
+  I was able to configure it easily and get the clean output shown below.
+- The output works locally and in GitHub Actions as well.
+- Huge respect and thanks to the author for this
+  brilliant [work](https://github.com/fabriciorby/maven-surefire-junit5-tree-reporter?tab=readme-ov-file)!
+  ❤️
 
 ## Star History
 
