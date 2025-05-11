@@ -70,6 +70,14 @@ jobs:
           distribution: 'adopt'
           cache: maven
 
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: target-${{ matrix.browser }} # Unique artifact name
+          path: |
+            ${{ github.workspace }}/target
+            ${{ github.workspace }}/reports
+
       - name: Download Artifacts
         uses: actions/download-artifact@v4
         with:
