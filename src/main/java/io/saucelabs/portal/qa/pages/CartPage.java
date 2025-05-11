@@ -15,10 +15,6 @@ public class CartPage extends SauceLabsBasePage {
         return getWebElementText(locateElements.getByClassName("title"));
     }
 
-    public int getCartProductCount() {
-        return Integer.parseInt(getWebElementText(locateElements.getByClassName("shopping_cart_badge")));
-    }
-
     public String getCartQuantityText() {
         return getWebElementText(locateElements.getByClassName("cart_quantity_label"));
     }

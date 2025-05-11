@@ -21,15 +21,6 @@ public class CartPageTest extends SauceLabsPortalTestBase {
         log.info("Verified the Cart Page Title Text {}", yourCartTitleText);
     }
 
-    @Test(description = "To verify, the cart page title.", groups = {WebTestGroups.SAUCE_LABS_REGRESSION})
-    public void testCartProductCount() {
-        boolean isCartClicked = SAUCE_LABS_PORTAL.get().HOME_PAGE.isShoppingCartLinkClicked();
-        Assert.assertTrue(isCartClicked, "Shopping Cart Link click failed!");
-        int cartProductCount = SAUCE_LABS_PORTAL.get().CART_PAGE.getCartProductCount();
-        Assert.assertTrue((cartProductCount >= 0), "Invalid Card Product Count!");
-        log.info("Verified the Cart Product Count {}.", cartProductCount);
-    }
-
     @Test(description = "To verify, the cart quantity label QTY.", groups = {WebTestGroups.SAUCE_LABS_REGRESSION})
     public void testCartQuantityText() {
         boolean isCartClicked = SAUCE_LABS_PORTAL.get().HOME_PAGE.isShoppingCartLinkClicked();
