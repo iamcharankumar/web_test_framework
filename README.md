@@ -3,9 +3,6 @@
 ![Maven](https://img.shields.io/badge/apachemaven-C71A36.svg?style=for-the-badge&logo=apachemaven&logoColor=white)
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 
-
-[![Selenium Test Framework](https://github.com/iamcharankumar/web_test_framework/actions/workflows/ci.yml/badge.svg)](https://github.com/iamcharankumar/web_test_framework/actions/workflows/ci.yml)
-
 # ABOUT
 
 A Web Test Framework for developing regression suites. The test cases can be run locally and in remote server.
